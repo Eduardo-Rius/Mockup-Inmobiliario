@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos y Casos de Éxito | SGI Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="internal-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="SGI Consulting Group">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+      </ul>
+      <div class="lang-selector">
+        <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
+      </div>
+      <a href="agendar-llamada.html" class="nav-cta">Agendar llamada</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- PROYECTOS Y CASOS DE ÉXITO -->
+  <section id="proyectos" style="background: var(--bg-main); min-height: 80vh;">
+    <h2 class="section-title">Casos de Éxito y <br><span>Proyectos Estratégicos</span></h2>
+    <p style="text-align:center; color:var(--text-muted); max-width:800px; margin:0 auto 4rem auto; font-size:1.1rem; line-height:1.6;">
+      Resultados tangibles de nuestro enfoque de inversión estructurada. Explore algunos de los activos más representativos que hemos gestionado y posicionado para nuestros clientes de alto patrimonio.
+    </p>
+    
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+      <!-- Proyecto 1 -->
+      <div class="service-card" style="padding:0; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Villa de Lujo" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:2rem;">
+          <h3 style="margin-top:0;">Adquisición Off-Market Marbella</h3>
+          <p style="margin-bottom:1rem; font-size:0.9rem; color:var(--accent-gold);">Europa • Sector Residencial Premium</p>
+          <p>Estructuración y compra de una villa de lujo fuera de mercado con un ahorro del 18% sobre el precio real de zona, generando rentabilidad inmediata mediante alquiler vacacional high-end.</p>
+        </div>
+      </div>
+      
+      <!-- Proyecto 2 -->
+      <div class="service-card" style="padding:0; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Edificio Comercial" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:2rem;">
+          <h3 style="margin-top:0;">Edificio Comercial Polanco</h3>
+          <p style="margin-bottom:1rem; font-size:0.9rem; color:var(--accent-gold);">México • Sector Comercial</p>
+          <p>Reposicionamiento de activo distressed en Ciudad de México. Remodelación integral y renegociación de contratos para triplicar el NOI (Net Operating Income) en 24 meses.</p>
+        </div>
+      </div>
+      
+      <!-- Proyecto 3 -->
+      <div class="service-card" style="padding:0; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Desarrollo Dubai" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:2rem;">
+          <h3 style="margin-top:0;">Inversión Pre-Construcción Dubai</h3>
+          <p style="margin-bottom:1rem; font-size:0.9rem; color:var(--accent-gold);">EAU • Desarrollo Inmobiliario</p>
+          <p>Identificación de oportunidad de entrada temprana en el distrito financiero. Adquisición de portfolio de 5 unidades con salida programada pre-entrega logrando 45% ROI anualizado.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 5rem;">
+      <a href="agendar-llamada.html" class="btn btn-gold">Analizar oportunidades similares</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
+    </div>
+    <div>
+      &copy; 2026 SGI Consulting Group. Todos los derechos reservados.
+    </div>
+    <div>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Privacidad</a>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Términos</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
