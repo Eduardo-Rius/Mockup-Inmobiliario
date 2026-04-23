@@ -12,7 +12,7 @@
 <body class="internal-page">
 
   <!-- NAVBAR -->
-  <nav id="navbar" class="scrolled">
+  <nav id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="Logo.png" alt="SGI Consulting Group">
     </a>
@@ -100,5 +100,16 @@
     </div>
   </footer>
 
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
