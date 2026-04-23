@@ -136,7 +136,7 @@ nav.scrolled {
 /* ─── SECTIONS COMMON ─── */
 section { padding: 6rem 4rem; }
 /* Added top padding for internal pages so content isn't under navbar */
-.internal-page section { padding-top: 18rem; }
+.internal-page section { padding-top: 13rem; }
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: center;
