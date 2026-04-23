@@ -7,280 +7,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #0A0A0A;
-      --bg-card: #141414;
-      --gold: #C9A84C;
-      --gold-hover: #b8973b;
-      --text-white: #F5F5F0;
-      --text-muted: #999999;
-      --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Inter', sans-serif;
-      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    
-    body {
-      background: var(--bg-dark);
-      color: var(--text-white);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    /* ─── TYPOGRAPHY ─── */
-    h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; }
-    p { color: var(--text-white); opacity: 0.9; }
-    
-    /* ─── BUTTONS ─── */
-    .btn {
-      display: inline-block;
-      padding: 1rem 2rem;
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all var(--transition);
-      cursor: pointer;
-      border: none;
-    }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--bg-dark);
-    }
-    .btn-gold:hover {
-      background: var(--gold-hover);
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--text-white);
-      border: 1px solid var(--text-white);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-    
-    /* ─── NAVBAR ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.5rem 4rem;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background var(--transition), padding var(--transition);
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 4rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .nav-logo img { height: 160px; object-fit: contain; }
-    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-white);
-      text-decoration: none;
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
-      height: 1px; background: var(--gold); transition: right var(--transition);
-    }
-    .nav-links a:hover::after { right: 0; }
-    
-    .lang-selector {
-      display: flex; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted);
-    }
-    .lang-selector span { cursor: pointer; transition: color 0.3s; }
-    .lang-selector span:hover, .lang-selector span.active { color: var(--gold); }
-    
-    .nav-cta {
-      padding: 0.7rem 1.5rem;
-      font-size: 0.7rem;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all var(--transition);
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--bg-dark); }
-    
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 25px; height: 1px; background: var(--text-white); transition: 0.3s; }
-    
-    /* ─── HERO ─── */
-    .hero {
-      position: relative; height: 100vh; min-height: 700px;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.6), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-      padding: 0 2rem;
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; }
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 1s ease 0.2s both;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-inline: auto;
-      animation: fadeUp 1s ease 0.4s both;
-    }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; animation: fadeUp 1s ease 0.6s both; }
-    
-    /* ─── SECTIONS COMMON ─── */
-    section { padding: 6rem 4rem; }
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      text-align: center;
-      margin-bottom: 4rem;
-      color: var(--text-white);
-    }
-    .section-title span { color: var(--gold); }
-    
-    /* ─── WHY SGI ─── */
-    .why-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
-    }
-    .why-item { text-align: center; }
-    .why-icon {
-      width: 60px; height: 60px; margin: 0 auto 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--gold); border-radius: 50%; color: var(--gold);
-      font-size: 1.5rem;
-    }
-    .why-item h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--gold); }
-    .why-item p { font-size: 0.95rem; color: var(--text-muted); }
-    
-    /* ─── SERVICES ─── */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-    }
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(201,168,76,0.1);
-      padding: 3rem 2rem;
-      transition: all var(--transition);
-      text-align: left;
-    }
-    .service-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-5px);
-    }
-    .service-card h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-    .service-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; }
-    .service-link {
-      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    
-    /* ─── MARKETS ─── */
-    .markets-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-    }
-    .market-block {
-      position: relative; aspect-ratio: 4/5; overflow: hidden;
-      display: flex; align-items: flex-end; padding: 2rem;
-    }
-    .market-bg {
-      position: absolute; inset: 0; background-size: cover; background-position: center;
-      transition: transform 0.8s ease; z-index: 1;
-    }
-    .market-block::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,0.9), transparent); z-index: 2;
-    }
-    .market-block:hover .market-bg { transform: scale(1.05); }
-    .market-content { position: relative; z-index: 3; }
-    .market-content h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--gold); }
-    .market-content p { font-size: 0.9rem; color: var(--text-white); opacity: 0.8; }
-    
-    /* ─── FOUNDER ─── */
-    .founder-section {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-      background: var(--bg-card);
-    }
-    .founder-img {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover;
-      filter: grayscale(100%); transition: filter 0.5s;
-    }
-    .founder-img:hover { filter: grayscale(0%); }
-    .founder-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .founder-content h4 { color: var(--gold); font-family: var(--font-sans); font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
-    .founder-content p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-    
-    /* ─── FORM ─── */
-    .form-section { text-align: center; max-width: 800px; margin: 0 auto; }
-    .form-container { background: var(--bg-card); padding: 4rem; border: 1px solid rgba(255,255,255,0.05); text-align: left; margin-top: 3rem; }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
-    .form-control {
-      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding: 0.8rem 0; color: var(--text-white); font-family: var(--font-sans); font-size: 1rem;
-      transition: border-color 0.3s; outline: none;
-    }
-    .form-control:focus { border-color: var(--gold); }
-    .form-select { background-color: var(--bg-dark); }
-    
-    /* ─── FOOTER ─── */
-    footer { padding: 4rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
-    .footer-logo img { height: 120px; opacity: 0.5; }
-    
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @media (max-width: 900px) {
-      nav { padding: 1.5rem 2rem; }
-      nav.scrolled { padding: 1rem 2rem; }
-      .nav-right { display: none; }
-      .hamburger { display: flex; }
-      section { padding: 4rem 2rem; }
-      .why-grid, .services-grid, .markets-grid, .founder-section { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero-actions { flex-direction: column; }
-      .form-container { padding: 2rem; }
-      footer { flex-direction: column; gap: 2rem; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="Logo.png" alt="SGI Consulting Group">
     </a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#mercados">Mercados</a></li>
-        <li><a href="#nosotros">Sobre SGI</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
       <div class="lang-selector">
         <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
       </div>
-      <a href="#contacto" class="nav-cta">Agendar llamada</a>
+      <a href="contacto.html" class="nav-cta">Agendar llamada</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -293,8 +39,8 @@
       <h1>Las mejores inversiones inmobiliarias no aparecen en el mercado. <br><em>Nosotros te damos acceso a ellas.</em></h1>
       <p>Consultoría estratégica de inversión inmobiliaria para inversores de alto patrimonio en Europa, México y Emiratos Árabes Unidos.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-gold">Agendar llamada de diagnóstico</a>
-        <a href="#servicios" class="btn btn-outline">Descubrir cómo trabajamos</a>
+        <a href="contacto.html" class="btn btn-gold">Agendar llamada de diagnóstico</a>
+        <a href="servicios.html" class="btn btn-outline">Descubrir cómo trabajamos</a>
       </div>
     </div>
   </section>
@@ -323,129 +69,15 @@
         <p>No cobramos comisión por cerrar operaciones. Cobramos por darte el criterio correcto antes de tomar una decisión de inversión. Esa diferencia lo cambia todo.</p>
       </div>
     </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" style="background: var(--bg-card);">
-    <h2 class="section-title">Cómo protegemos y <br><span>hacemos crecer tu capital</span></h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Consultoría de Inversión Estratégica</h3>
-        <p>Analizamos tu perfil de inversión, objetivos de capital y tolerancia al riesgo para identificar las oportunidades que realmente tienen sentido para ti. Sin ruido. Sin presión. Con datos.</p>
-        <a href="#contacto" class="service-link">Solicitar Análisis <span>&rarr;</span></a>
-      </div>
-      <div class="service-card">
-        <h3>Acceso a Operaciones Off-Market</h3>
-        <p>Te conectamos con activos exclusivos en Europa, México y EAU que nunca llegan al mercado abierto. Propiedades residenciales de lujo, activos comerciales estratégicos y oportunidades de desarrollo con retornos superiores.</p>
-        <a href="#contacto" class="service-link">Ver Oportunidades <span>&rarr;</span></a>
-      </div>
-      <div class="service-card">
-        <h3>Acompañamiento en el Proceso de Compra</h3>
-        <p>Gestionamos la complejidad de adquisiciones internacionales. Desde la auditoría legal y fiscal hasta la estructuración de la compra y cierre, asegurando que tu capital esté protegido en cada paso.</p>
-        <a href="#contacto" class="service-link">Conocer Proceso <span>&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MERCADOS -->
-  <section id="mercados">
-    <h2 class="section-title">Presencia global, <br><span>conocimiento local</span></h2>
-    <div class="markets-grid">
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>Europa</h3>
-          <p>Activos de preservación de capital en Madrid, Londres y París.</p>
-        </div>
-      </div>
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>México</h3>
-          <p>Alto rendimiento y desarrollo en CDMX, Riviera Maya y Los Cabos.</p>
-        </div>
-      </div>
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>EAU</h3>
-          <p>Mercados emergentes de lujo e inversión libre de impuestos en Dubái.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOUNDER -->
-  <section class="founder-section" id="sobre-sgi">
-    <div>
-      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Fundador SGI" class="founder-img">
-    </div>
-    <div class="founder-content">
-      <h2>Liderazgo con visión <br><span style="color:var(--gold)">estratégica</span></h2>
-      <h4>Fundador & CEO</h4>
-      <p>Con más de 25 años de trayectoria en la estructuración de transacciones inmobiliarias de alto perfil, SGI fue concebida bajo una premisa fundamental: el inversor sofisticado no necesita más opciones, necesita mejor criterio.</p>
-      <p>Nuestra red global nos permite acceder a activos que definen portafolios, operando con la discreción y excelencia que exigen los mercados más competitivos del mundo.</p>
-      <img src="Logo.png" alt="SGI Signature" style="height:40px; margin-top:2rem; opacity:0.8;">
-    </div>
-  </section>
-
-  <!-- FORM / CONTACT -->
-  <section id="contacto" class="form-section">
-    <h2 class="section-title">Inicia la conversación</h2>
-    <p style="color:var(--text-muted); max-width:600px; margin:0 auto;">Agende una llamada de diagnóstico. Evaluaremos si nuestra red y enfoque se alinean con sus objetivos de inversión.</p>
-    
-    <div class="form-container">
-      <form>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
-          <div class="form-group">
-            <label class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" placeholder="Su nombre">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" placeholder="su@email.com">
-          </div>
-        </div>
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Volumen de Inversión Estimado</label>
-          <select class="form-control form-select">
-            <option>Seleccione un rango</option>
-            <option>€500K - €1M</option>
-            <option>€1M - €5M</option>
-            <option>+€5M</option>
-          </select>
-        </div>
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Mercado de Interés Principal</label>
-          <select class="form-control form-select">
-            <option>Seleccione un mercado</option>
-            <option>Europa</option>
-            <option>México</option>
-            <option>Emiratos Árabes Unidos</option>
-            <option>Diversificado</option>
-          </select>
-        </div>
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Objetivo Principal</label>
-          <select class="form-control form-select">
-            <option>Seleccione un objetivo</option>
-            <option>Rentabilidad a corto/medio plazo</option>
-            <option>Preservación de capital</option>
-            <option>Diversificación de portafolio</option>
-          </select>
-        </div>
-        
-        <div style="margin-top: 3rem; text-align: center;">
-          <button type="submit" class="btn btn-gold" style="width:100%; font-size:1rem;">Agendar llamada de diagnóstico (Calendly)</button>
-        </div>
-      </form>
+    <div style="text-align: center; margin-top: 4rem;">
+      <a href="servicios.html" class="btn btn-outline">Conocer todos los servicios</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
-      <img src="Logo.png" alt="SGI Consulting Group">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
     </div>
     <div>
       &copy; 2026 SGI Consulting Group. Todos los derechos reservados.

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios | SGI Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="internal-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="SGI Consulting Group">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="lang-selector">
+        <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
+      </div>
+      <a href="contacto.html" class="nav-cta">Agendar llamada</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" style="background: var(--bg-card); min-height: 80vh;">
+    <h2 class="section-title">Cómo protegemos y <br><span>hacemos crecer tu capital</span></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Consultoría de Inversión Estratégica</h3>
+        <p>Analizamos tu perfil de inversión, objetivos de capital y tolerancia al riesgo para identificar las oportunidades que realmente tienen sentido para ti. Sin ruido. Sin presión. Con datos.</p>
+        <a href="contacto.html" class="service-link">Solicitar Análisis <span>&rarr;</span></a>
+      </div>
+      <div class="service-card">
+        <h3>Acceso a Operaciones Off-Market</h3>
+        <p>Te conectamos con activos exclusivos en Europa, México y EAU que nunca llegan al mercado abierto. Propiedades residenciales de lujo, activos comerciales estratégicos y oportunidades de desarrollo con retornos superiores.</p>
+        <a href="contacto.html" class="service-link">Ver Oportunidades <span>&rarr;</span></a>
+      </div>
+      <div class="service-card">
+        <h3>Acompañamiento en el Proceso de Compra</h3>
+        <p>Gestionamos la complejidad de adquisiciones internacionales. Desde la auditoría legal y fiscal hasta la estructuración de la compra y cierre, asegurando que tu capital esté protegido en cada paso.</p>
+        <a href="contacto.html" class="service-link">Conocer Proceso <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
+    </div>
+    <div>
+      &copy; 2026 SGI Consulting Group. Todos los derechos reservados.
+    </div>
+    <div>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Privacidad</a>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Términos</a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.add('scrolled'); // Force scrolled background for internal pages
+      }
+    });
+  </script>
+</body>
+</html>

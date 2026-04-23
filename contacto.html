@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | SGI Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="internal-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="SGI Consulting Group">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="lang-selector">
+        <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
+      </div>
+      <a href="contacto.html" class="nav-cta">Agendar llamada</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- FORM / CONTACT -->
+  <section id="contacto" class="form-section" style="min-height: 80vh;">
+    <h2 class="section-title">Inicia la conversación</h2>
+    <p style="color:var(--text-muted); max-width:600px; margin:0 auto;">Agende una llamada de diagnóstico. Evaluaremos si nuestra red y enfoque se alinean con sus objetivos de inversión.</p>
+    
+    <div class="form-container">
+      <form>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
+          <div class="form-group">
+            <label class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" placeholder="Su nombre">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" placeholder="su@email.com">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:1.5rem;">
+          <label class="form-label">Volumen de Inversión Estimado</label>
+          <select class="form-control form-select">
+            <option>Seleccione un rango</option>
+            <option>€500K - €1M</option>
+            <option>€1M - €5M</option>
+            <option>+€5M</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:1.5rem;">
+          <label class="form-label">Mercado de Interés Principal</label>
+          <select class="form-control form-select">
+            <option>Seleccione un mercado</option>
+            <option>Europa</option>
+            <option>México</option>
+            <option>Emiratos Árabes Unidos</option>
+            <option>Diversificado</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:1.5rem;">
+          <label class="form-label">Objetivo Principal</label>
+          <select class="form-control form-select">
+            <option>Seleccione un objetivo</option>
+            <option>Rentabilidad a corto/medio plazo</option>
+            <option>Preservación de capital</option>
+            <option>Diversificación de portafolio</option>
+          </select>
+        </div>
+        
+        <div style="margin-top: 3rem; text-align: center;">
+          <button type="submit" class="btn btn-gold" style="width:100%; font-size:1rem;">Agendar llamada de diagnóstico (Calendly)</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
+    </div>
+    <div>
+      &copy; 2026 SGI Consulting Group. Todos los derechos reservados.
+    </div>
+    <div>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Privacidad</a>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Términos</a>
+    </div>
+  </footer>
+
+</body>
+</html>
