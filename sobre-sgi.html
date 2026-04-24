@@ -38,7 +38,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 4rem;
-      padding: 7rem 2rem 6rem 2rem;
+      padding: 5rem 2rem 6rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
       min-height: 85vh;
@@ -49,7 +49,7 @@
       .founder-grid {
         grid-template-columns: 45% 1fr;
         gap: 6rem;
-        padding-top: 8rem;
+        padding-top: 6rem;
       }
     }
 
@@ -139,44 +139,75 @@
       line-height: 1.6;
       margin-bottom: 3.5rem;
     }
+
+    @keyframes smoothReveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal-photo {
+      opacity: 0;
+      animation: smoothReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .reveal-title {
+      opacity: 0;
+      animation: smoothReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 0.15s;
+    }
+
+    .reveal-text {
+      opacity: 0;
+      animation: smoothReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 0.3s;
+    }
   </style>
 
   <section id="sobre-sgi" style="background: var(--bg-main);">
     <div class="founder-grid">
       
       <!-- IMAGE COLUMN -->
-      <div class="founder-img-wrapper">
+      <div class="founder-img-wrapper reveal-photo">
         <img src="Emilio.jpeg" alt="Emili Rivelles - Founder & CEO">
       </div>
       
       <!-- CONTENT COLUMN -->
       <div>
-        <h1 class="founder-title">Conexiones que lo cambian todo</h1>
-        <p class="founder-subtitle">En los mercados de alto valor, la diferencia no está en buscar más oportunidades. Está en saber con quién hablar, cuándo entrar y qué decisión evitar.</p>
-        
-        <span class="founder-tag">Fundador & CEO &middot; Estrategia global &middot; Acceso privado</span>
-        
-        <p class="founder-text">
-          Durante más de 25 años, Emili Rivelles ha construido una red internacional basada en confianza, discreción y resultados.
-        </p>
-        <p class="founder-text">
-          SGI nace de esa experiencia: conectar a inversores, empresarios y patrimonios privados con oportunidades que no siempre aparecen en el mercado visible.
-        </p>
-        <p class="founder-text">
-          No se trata de mostrar opciones.<br>
-          Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
-        </p>
-
-        <div class="founder-highlight-block">
-          <p>Una buena conexión puede cambiar una operación.<br>
-          La conexión correcta puede cambiar una cartera completa.</p>
+        <div class="reveal-title">
+          <h1 class="founder-title">Conexiones que lo cambian todo</h1>
+          <p class="founder-subtitle">En los mercados de alto valor, la diferencia no está en buscar más oportunidades. Está en saber con quién hablar, cuándo entrar y qué decisión evitar.</p>
+          <span class="founder-tag">Fundador & CEO &middot; Estrategia global &middot; Acceso privado</span>
         </div>
+        
+        <div class="reveal-text">
+          <p class="founder-text">
+            Durante más de 25 años, Emili Rivelles ha construido una red internacional basada en confianza, discreción y resultados.
+          </p>
+          <p class="founder-text">
+            SGI nace de esa experiencia: conectar a inversores, empresarios y patrimonios privados con oportunidades que no siempre aparecen en el mercado visible.
+          </p>
+          <p class="founder-text">
+            No se trata de mostrar opciones.<br>
+            Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
+          </p>
 
-        <p class="founder-closing">
-          SGI trabaja con perfiles que entienden el valor del acceso, la discreción y el criterio antes de tomar decisiones de alto impacto.
-        </p>
+          <div class="founder-highlight-block">
+            <p>Una buena conexión puede cambiar una operación.<br>
+            La conexión correcta puede cambiar una cartera completa.</p>
+          </div>
 
-        <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">Solicitar evaluación privada</a>
+          <p class="founder-closing">
+            SGI trabaja con perfiles que entienden el valor del acceso, la discreción y el criterio antes de tomar decisiones de alto impacto.
+          </p>
+
+          <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">Solicitar evaluación privada</a>
+        </div>
       </div>
     </div>
   </section>
