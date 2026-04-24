@@ -109,85 +109,111 @@
     .reveal-2 { opacity: 0; animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.4s; }
     .reveal-3 { opacity: 0; animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.6s; }
 
-    /* Rediseño de las regiones para no parecer catálogo */
-    .strategic-regions {
-      padding: 8rem 2rem;
-      background: var(--bg-main);
+    /* Tarjetas Premium de Mercados */
+    .markets-cards-section {
+      padding: 6rem 2rem 10rem 2rem;
+      background: #000;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    .region-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    .market-card {
+      position: relative;
+      width: 100%;
+      min-height: 650px;
+      border-radius: 4px;
+      overflow: hidden;
       margin-bottom: 8rem;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 5rem 4rem;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.8s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(40px);
     }
 
-    .region-row.is-visible {
+    .market-card.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    @media (min-width: 992px) {
-      .region-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-      }
-      .region-row:nth-child(even) .region-text {
-        order: -1;
-      }
+    .market-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(201, 168, 76, 0.15);
     }
 
-    .region-image {
-      width: 100%;
-      height: 400px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      filter: grayscale(80%) contrast(1.1);
-      transition: filter 0.5s ease;
-    }
-
-    .region-image:hover {
-      filter: grayscale(0%) contrast(1.1);
-    }
-
-    .region-image::after {
-      content: '';
+    .market-card-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
+      z-index: 1;
+      transition: background 0.8s ease;
     }
 
-    .region-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #FFF;
-      margin-bottom: 1.5rem;
+    .market-card:hover .market-card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+    }
+
+    .market-card-content {
       position: relative;
-      padding-left: 1.5rem;
+      z-index: 2;
+      max-width: 800px;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .region-text h3::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 10%;
-      bottom: 10%;
-      width: 2px;
-      background: var(--gold);
+    .market-card:hover .market-card-content {
+      transform: translateY(-10px);
     }
 
-    .region-text p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
+    .market-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      background: rgba(0,0,0,0.6);
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 30px;
+    }
+
+    .market-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      color: #FFF;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .market-card h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+    }
+
+    .market-card p {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      color: #DDD;
+      line-height: 1.7;
       margin-bottom: 1.5rem;
+    }
+
+    .market-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .market-card {
+        padding: 3rem 2rem;
+        min-height: 550px;
+        margin-bottom: 5rem;
+      }
     }
 
     /* Sección de Cierre */
@@ -247,35 +273,41 @@
     </div>
   </header>
 
-  <!-- REGIONES ESTRATÉGICAS (REDISEÑO) -->
-  <section class="strategic-regions">
-    <!-- Europa -->
-    <div class="region-row scroll-reveal">
-      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80');"></div>
-      <div class="region-text">
-        <h3>Europa</h3>
-        <p>Hub financiero y refugio histórico para la preservación de capital. Centramos nuestra estrategia en mercados consolidados como Madrid, Londres y París.</p>
-        <p>El valor aquí no reside en el volumen, sino en la adquisición de activos atemporales que ofrecen estabilidad estructural a largo plazo y beneficios fiscales optimizados.</p>
+  <!-- TARJETAS DE MERCADOS PREMIUM -->
+  <section class="markets-cards-section">
+    <!-- EUROPA -->
+    <div class="market-card scroll-reveal" style="background-image: url('https://images.unsplash.com/photo-1558642084-fd07fae5ceb2?auto=format&fit=crop&w=1600&q=80');">
+      <div class="market-card-overlay"></div>
+      <div class="market-card-content">
+        <span class="market-tag">Barcelona &middot; Mónaco &middot; Mercados prime</span>
+        <h2>Europa</h2>
+        <h3>Preservación, legado y acceso selectivo</h3>
+        <p>Europa exige criterio. No basta con identificar activos atractivos; hay que entender regulación, fiscalidad, liquidez, ubicación y timing.</p>
+        <p>Barcelona y Mónaco representan dos caras del mismo objetivo: activos con historia, escasez y valor sostenido.</p>
       </div>
     </div>
 
-    <!-- México -->
-    <div class="region-row scroll-reveal">
-      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=1200&q=80');"></div>
-      <div class="region-text">
-        <h3>México</h3>
-        <p>Un entorno de alto crecimiento con ventanas de oportunidad asimétricas. Nos posicionamos en zonas de máxima expansión como CDMX, Riviera Maya y Los Cabos.</p>
-        <p>Conocemos el tejido local y las barreras de entrada, permitiendo a nuestros clientes estructurar operaciones de alto rendimiento y desarrollo con riesgo controlado.</p>
+    <!-- MÉXICO -->
+    <div class="market-card scroll-reveal" style="background-image: url('https://images.unsplash.com/photo-1552086117-91547e2469a4?auto=format&fit=crop&w=1600&q=80');">
+      <div class="market-card-overlay"></div>
+      <div class="market-card-content">
+        <span class="market-tag">Riviera Maya &middot; Desarrollo &middot; Alto potencial</span>
+        <h2>México</h2>
+        <h3>Crecimiento, rentabilidad y expansión patrimonial</h3>
+        <p>México ofrece dinamismo, demanda internacional y desarrollo estratégico en regiones clave.</p>
+        <p>En Riviera Maya, el acceso correcto permite identificar oportunidades antes de que lleguen al mercado masivo.</p>
       </div>
     </div>
 
     <!-- EAU -->
-    <div class="region-row scroll-reveal">
-      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');"></div>
-      <div class="region-text">
-        <h3>Emiratos Árabes Unidos</h3>
-        <p>El epicentro del capital moderno. Dubái ofrece mercados emergentes de superlujo y estructuras de inversión altamente eficientes y libres de impuestos.</p>
-        <p>Accedemos a operaciones off-market y proyectos exclusivos antes de su comercialización pública, garantizando un posicionamiento temprano y estratégico.</p>
+    <div class="market-card scroll-reveal" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80');">
+      <div class="market-card-overlay"></div>
+      <div class="market-card-content">
+        <span class="market-tag">Dubái &middot; Burj Khalifa &middot; Capital global</span>
+        <h2>Emiratos Árabes Unidos</h2>
+        <h3>Velocidad, visión global y capital internacional</h3>
+        <p>Dubái se ha consolidado como centro global para capital internacional, activos premium y estructuras de inversión.</p>
+        <p>Pero la velocidad del mercado exige criterio. Llegar tarde o entrar sin red puede convertir una oportunidad atractiva en una decisión costosa.</p>
       </div>
     </div>
   </section>
