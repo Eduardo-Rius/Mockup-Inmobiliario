@@ -45,7 +45,7 @@
         display: grid;
         grid-template-columns: 1fr 1.2fr;
         background: var(--bg-card);
-        margin-bottom: 4rem;
+        margin-bottom: 6rem; /* Increased spacing */
         box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         overflow: hidden;
       }
@@ -54,12 +54,12 @@
       }
       .case-img-wrapper {
         position: relative;
-        min-height: 400px;
+        min-height: 450px; /* Slightly taller for story feel */
       }
       .case-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.7); /* Darker overlay */
         z-index: 1;
       }
       .case-img-wrapper img {
@@ -70,7 +70,18 @@
         object-fit: cover;
       }
       .case-content {
-        padding: 4rem;
+        padding: 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .story-line {
+        margin-top: 1.5rem;
+        font-style: italic;
+        color: #888;
+        font-size: 0.95rem;
+        border-top: 1px dashed rgba(255,255,255,0.1);
+        padding-top: 1.5rem;
       }
       @media (max-width: 992px) {
         .case-study, .case-study.case-reverse {
@@ -89,6 +100,7 @@
           border-left: none !important;
           border-right: none !important;
           border-top: 4px solid var(--accent-gold);
+          padding: 3rem;
         }
       }
     </style>
@@ -102,25 +114,29 @@
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Arquitectura Corporativa">
         </div>
         <div class="case-content" style="border-left: 4px solid var(--accent-gold);">
-          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Operación internacional</div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px;">De múltiples opciones a una decisión correcta</h3>
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Confidencial &middot; Operación internacional</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px; line-height: 1.2;">Elegir correctamente en un entorno lleno de ruido</h3>
           
           <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
             <div>
               <strong style="color: #FFF; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Contexto</strong>
-              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Inversor evaluando múltiples activos en mercado abierto sin visibilidad real de cuál representaba una oportunidad sólida.</p>
+              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Inversor evaluando múltiples activos en mercado abierto sin visibilidad clara de cuál representaba una oportunidad real y con riesgo de tomar una decisión basada en información incompleta.</p>
             </div>
             <div>
               <strong style="color: #FFF; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Decisión</strong>
-              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Filtrado estratégico, acceso a operación fuera de mercado y eliminación de alternativas irrelevantes.</p>
+              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Eliminación del 80% de opciones irrelevantes, acceso a operación fuera de mercado y validación completa antes de tomar decisión.</p>
             </div>
           </div>
 
           <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-            <strong style="color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Resultado</strong>
-            <p style="color: #FFF; margin-top: 0.5rem; line-height: 1.5; font-size: 1.3rem;">
-              Reducción del coste operativo en un <span style="font-size: 2.5rem; font-weight: 600; color: var(--gold); vertical-align: middle; margin: 0 0.2rem;">28%</span> y aceleración del proceso de decisión de semanas a días.
+            <strong style="color: var(--gold); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Resultado</strong>
+            <p style="color: #FFF; margin-top: 0.8rem; line-height: 1.5; font-size: 1.3rem;">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--gold); vertical-align: middle; margin-right: 0.5rem; line-height: 1;">28%</span> menos coste operativo y una decisión que pasó de incertidumbre a claridad en cuestión de días.
             </p>
+          </div>
+          
+          <div class="story-line">
+            "Sin acceso ni criterio, esta operación habría seguido el mismo camino que el resto del mercado."
           </div>
         </div>
       </div>
@@ -128,25 +144,29 @@
       <!-- Caso 2 -->
       <div class="case-study case-reverse">
         <div class="case-content" style="border-right: 4px solid var(--accent-gold);">
-          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Estructuración de inversión</div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px;">Evitar una mala inversión antes de que ocurra</h3>
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Confidencial &middot; Operación internacional</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px; line-height: 1.2;">Una decisión evitada que protegió capital</h3>
           
           <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
             <div>
               <strong style="color: #FFF; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Contexto</strong>
-              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Inversor operando fuera de su mercado habitual sin estructura ni control completo del riesgo.</p>
+              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Inversor operando en un mercado extranjero con alta exposición al riesgo, sin estructura legal blindada y al borde de comprometer capital en una estructura ineficiente.</p>
             </div>
             <div>
               <strong style="color: #FFF; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Decisión</strong>
-              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Definición de estructura de inversión, validación financiera y coordinación con equipo legal y fiscal.</p>
+              <p style="color: #CCC; margin-top: 0.5rem; line-height: 1.7; font-size: 1.05rem;">Freno inmediato a la operación, reestructuración total del vehículo de inversión y blindaje jurídico-fiscal antes de transferir fondos.</p>
             </div>
           </div>
 
           <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-            <strong style="color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Resultado</strong>
-            <p style="color: #FFF; margin-top: 0.5rem; line-height: 1.5; font-size: 1.3rem;">
-              Reducción de incidencias en más del <span style="font-size: 2.5rem; font-weight: 600; color: var(--gold); vertical-align: middle; margin: 0 0.2rem;">30%</span> y eliminación de errores críticos en la operación.
+            <strong style="color: var(--gold); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Resultado</strong>
+            <p style="color: #FFF; margin-top: 0.8rem; line-height: 1.5; font-size: 1.3rem;">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--gold); vertical-align: middle; margin-right: 0.5rem; line-height: 1;">30%</span> de optimización fiscal, protección absoluta del capital y ejecución con riesgo operativo nulo.
             </p>
+          </div>
+          
+          <div class="story-line">
+            "Sin acceso ni criterio, esta operación habría seguido el mismo camino que el resto del mercado."
           </div>
         </div>
         <div class="case-img-wrapper">
@@ -155,7 +175,7 @@
         </div>
       </div>
       
-      <div style="text-align: center; color: var(--text-muted); font-style: italic; font-size: 1.2rem; margin-bottom: 4rem;">
+      <div style="text-align: center; color: var(--text-muted); font-style: italic; font-size: 1.2rem; margin-bottom: 4rem; padding-top: 2rem;">
         No todas las operaciones se pueden mostrar.<br>
         Pero todas se trabajan con el mismo criterio.
       </div>
