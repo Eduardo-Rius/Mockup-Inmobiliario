@@ -61,47 +61,47 @@
     </div>
     
     <div class="form-container" style="max-width: 800px; margin: 5rem auto 0 auto;">
-      <form>
+      <form id="crm-form" class="evaluation-form">
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
           <div class="form-group">
-            <label class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" placeholder="Su nombre">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" name="nombre" class="form-control" placeholder="Ej. Carlos Mendoza" required>
           </div>
           <div class="form-group">
             <label class="form-label">País de residencia</label>
-            <input type="text" class="form-control" placeholder="Ej. España, México, etc.">
+            <input type="text" name="pais" class="form-control" placeholder="Ej. México" required>
           </div>
         </div>
 
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
           <div class="form-group">
-            <label class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" placeholder="su@email.com">
+            <label class="form-label">Email personal o corporativo</label>
+            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required>
           </div>
           <div class="form-group">
             <label class="form-label">Teléfono (con prefijo internacional)</label>
-            <input type="tel" class="form-control" placeholder="+34 000 000 000">
+            <input type="tel" name="telefono" class="form-control" placeholder="+34 000 000 000" required>
           </div>
         </div>
 
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
           <div class="form-group">
             <label class="form-label">Volumen de inversión</label>
-            <select class="form-control form-select">
+            <select name="volumen" class="form-control form-select" required>
               <option value="" disabled selected>Seleccione un rango</option>
-              <option>€1M – €3M</option>
-              <option>€3M – €10M</option>
-              <option>+€10M</option>
+              <option value="1M–3M">€1M – €3M</option>
+              <option value="3M–10M">€3M – €10M</option>
+              <option value="+10M">+€10M</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Mercado de interés</label>
-            <select class="form-control form-select">
+            <select name="mercado" class="form-control form-select" required>
               <option value="" disabled selected>Seleccione un mercado</option>
-              <option>Europa</option>
-              <option>México</option>
-              <option>Emiratos</option>
-              <option>Indiferente</option>
+              <option value="Europa">Europa</option>
+              <option value="México">México</option>
+              <option value="Emiratos">Emiratos</option>
+              <option value="Indiferente">Indiferente</option>
             </select>
           </div>
         </div>
@@ -109,33 +109,36 @@
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
           <div class="form-group">
             <label class="form-label">Objetivo principal</label>
-            <select class="form-control form-select">
+            <select name="objetivo" class="form-control form-select" required>
               <option value="" disabled selected>Seleccione un objetivo</option>
-              <option>Rentabilidad</option>
-              <option>Revalorización</option>
-              <option>Diversificación</option>
-              <option>Preservación</option>
+              <option value="Rentabilidad">Rentabilidad</option>
+              <option value="Revalorización">Revalorización</option>
+              <option value="Diversificación">Diversificación</option>
+              <option value="Preservación">Preservación</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">¿Has invertido fuera de tu país?</label>
-            <select class="form-control form-select">
+            <select name="invertido_fuera" class="form-control form-select" required>
               <option value="" disabled selected>Seleccione una opción</option>
-              <option>Sí</option>
-              <option>No</option>
+              <option value="Sí">Sí</option>
+              <option value="No">No</option>
             </select>
           </div>
         </div>
 
         <div class="form-group" style="margin-top:1.5rem;">
           <label class="form-label">¿Qué buscas en un asesor?</label>
-          <textarea class="form-control" rows="3" maxlength="200" placeholder="Escriba brevemente lo que valora en un asesor estratégico (máx 200 caracteres)..." style="resize: none;"></textarea>
+          <textarea name="asesor" class="form-control" rows="3" maxlength="200" placeholder="Escriba brevemente lo que valora en un asesor estratégico (máx 200 caracteres)..." style="resize: none;" required></textarea>
         </div>
         
         <div style="margin-top: 3rem; text-align: center;">
-          <button type="button" class="btn btn-gold" onclick="document.getElementById('form-success-msg').style.display='block'; this.style.display='none';" style="width:100%; font-size:1.1rem; padding: 1.2rem;">Enviar mi perfil de inversión</button>
-          <p id="form-success-msg" style="display: none; color: var(--gold); font-size: 1.1rem; border: 1px solid var(--accent-gold); padding: 1.5rem; background: rgba(201,168,76,0.1);">
+          <button type="submit" id="submit-btn" class="btn btn-gold" style="width:100%; font-size:1.1rem; padding: 1.2rem;">Enviar mi perfil de inversión</button>
+          <p id="form-success-msg" style="display: none; color: var(--gold); font-size: 1.1rem; border: 1px solid var(--accent-gold); padding: 1.5rem; background: rgba(201,168,76,0.1); margin-top: 1.5rem;">
             Hemos recibido tu información. Si existe alineación con nuestro perfil de cliente, te contactaremos en menos de 48 horas.
+          </p>
+          <p id="form-error-msg" style="display: none; color: #ff6b6b; font-size: 1rem; margin-top: 1.5rem;">
+            Ocurrió un error al enviar el formulario. Por favor, intenta de nuevo.
           </p>
         </div>
       </form>
@@ -159,12 +162,44 @@
   <script>
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 10) {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
+    });
+
+    // Form submission logic
+    const form = document.getElementById('crm-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success-msg');
+    const errorMsg = document.getElementById('form-error-msg');
+    
+    // URL DE GOOGLE APPS SCRIPT (REEMPLAZAR AQUÍ)
+    const scriptURL = 'https://script.google.com/macros/s/TU_SCRIPT_ID/exec';
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      submitBtn.innerText = "Enviando...";
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.7";
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          submitBtn.style.display = 'none';
+          successMsg.style.display = 'block';
+          errorMsg.style.display = 'none';
+          form.reset();
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          submitBtn.innerText = "Enviar mi perfil de inversión";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+          errorMsg.style.display = 'block';
+        });
     });
   </script>
 </body>
