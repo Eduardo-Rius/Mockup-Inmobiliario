@@ -38,7 +38,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 4rem;
-      padding: 0.5rem 2rem 6rem 2rem;
+      padding: 0.5rem 2rem 2rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
       min-height: 85vh;
@@ -119,25 +119,48 @@
       margin-bottom: 1.5rem;
     }
 
-    .founder-highlight-block {
-      margin: 3.5rem 0;
-      padding-left: 2rem;
-      border-left: 3px solid var(--accent-gold);
+    .founder-closing-section {
+      max-width: 900px;
+      margin: 4rem auto 0 auto;
+      padding: 0 2rem 10rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .founder-highlight-block p {
-      font-size: 1.4rem;
+    .closing-highlight {
+      margin: 2rem 0;
+    }
+
+    .closing-highlight p {
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
       color: #FFF;
       font-style: italic;
-      line-height: 1.5;
+      font-weight: 300;
+      line-height: 1.4;
       margin: 0;
     }
-    
-    .founder-closing {
-      font-size: 1.15rem;
+
+    .closing-divider {
+      width: 1px;
+      height: 80px;
+      background: rgba(201, 168, 76, 0.4);
+      margin: 4rem auto;
+    }
+
+    .closing-text {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
       color: var(--gold);
       line-height: 1.6;
-      margin-bottom: 3.5rem;
+      max-width: 600px;
+      margin: 0 auto 5rem auto;
+    }
+
+    .closing-btn {
+      padding: 1.4rem 3.5rem;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
     }
 
     @keyframes smoothReveal {
@@ -196,19 +219,30 @@
             No se trata de mostrar opciones.<br>
             Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
           </p>
-
-          <div class="founder-highlight-block">
-            <p>Una buena conexión puede cambiar una operación.<br>
-            La conexión correcta puede cambiar una cartera completa.</p>
-          </div>
-
-          <p class="founder-closing">
-            SGI trabaja con perfiles que entienden el valor del acceso, la discreción y el criterio antes de tomar decisiones de alto impacto.
-          </p>
-
-          <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">Solicitar evaluación privada</a>
         </div>
       </div>
+    </div> <!-- Close founder-grid -->
+
+    <!-- Cierre Centrado -->
+    <div class="founder-closing-section reveal-text" style="animation-delay: 0.45s;">
+      
+      <!-- BLOQUE 1 (Frase) -->
+      <div class="closing-highlight">
+        <p>Una buena conexión puede cambiar una operación.<br>
+        La conexión correcta puede cambiar una cartera completa.</p>
+      </div>
+
+      <!-- Divisor -->
+      <div class="closing-divider"></div>
+
+      <!-- BLOQUE 2 (Texto dorado/suave) -->
+      <p class="closing-text">
+        SGI trabaja con perfiles que entienden el valor del acceso, la discreción y el criterio antes de tomar decisiones de alto impacto.
+      </p>
+
+      <!-- BLOQUE 3 (CTA) -->
+      <a href="agendar-llamada.html" class="btn btn-gold closing-btn">Solicitar evaluación privada</a>
+      
     </div>
   </section>
 
