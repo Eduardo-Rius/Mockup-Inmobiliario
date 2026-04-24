@@ -190,6 +190,45 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Sección de Cierre */
+    .markets-closing {
+      background: #000;
+      padding: 10rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .markets-closing.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .markets-closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #FFF;
+      max-width: 900px;
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    .markets-closing-text {
+      max-width: 800px;
+      margin: 0 auto 4rem auto;
+    }
+
+    .markets-closing-text p {
+      color: var(--text-muted);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
   </style>
 
   <!-- MERCADOS HERO -->
@@ -239,6 +278,17 @@
         <p>Accedemos a operaciones off-market y proyectos exclusivos antes de su comercialización pública, garantizando un posicionamiento temprano y estratégico.</p>
       </div>
     </div>
+  </section>
+
+  <!-- CIERRE ESTRATÉGICO -->
+  <section class="markets-closing scroll-reveal">
+    <h2>No todos los mercados son para todos los inversores.</h2>
+    <div class="markets-closing-text">
+      <p>Cada geografía tiene reglas no escritas, riesgos invisibles y oportunidades que solo aparecen cuando existe la conexión correcta.</p>
+      <p>Nuestro trabajo no es llevarte a todos los mercados.<br>
+      Es ayudarte a entrar en el mercado correcto, con la persona correcta y en el momento correcto.</p>
+    </div>
+    <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.4rem 3.5rem; font-size: 1.15rem;">Solicitar evaluación privada</a>
   </section>
 
   <!-- FOOTER -->
