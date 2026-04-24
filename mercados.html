@@ -123,7 +123,7 @@
       min-height: 650px;
       border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 8rem;
+      margin-bottom: 6rem;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -132,6 +132,14 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       opacity: 0;
       transform: translateY(40px);
+    }
+
+    .market-separator {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin: 0 auto 6rem auto;
+      opacity: 0.3;
     }
 
     .market-card-bg {
@@ -225,7 +233,11 @@
       .market-card {
         padding: 3rem 2rem;
         min-height: 550px;
-        margin-bottom: 5rem;
+        margin-bottom: 4rem;
+      }
+      .market-separator {
+        height: 50px;
+        margin: 0 auto 4rem auto;
       }
     }
 
@@ -301,6 +313,8 @@
       </div>
     </div>
 
+    <div class="market-separator scroll-reveal"></div>
+
     <!-- MÉXICO -->
     <div class="market-card scroll-reveal">
       <div class="market-card-bg" style="background-image: url('RivieraMaya.webp');"></div>
@@ -314,8 +328,10 @@
       </div>
     </div>
 
+    <div class="market-separator scroll-reveal"></div>
+
     <!-- EAU -->
-    <div class="market-card scroll-reveal">
+    <div class="market-card scroll-reveal" style="margin-bottom: 0;">
       <div class="market-card-bg" style="background-image: url('https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1600&q=80');"></div>
       <div class="market-card-overlay"></div>
       <div class="market-card-content">
