@@ -48,6 +48,11 @@
         margin-bottom: 6rem; /* Increased spacing */
         box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         overflow: hidden;
+        transition: box-shadow 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        cursor: pointer;
+      }
+      .case-study:hover {
+        box-shadow: 0 15px 40px rgba(0,0,0,0.7);
       }
       .case-study.case-reverse {
         grid-template-columns: 1.2fr 1fr;
@@ -55,12 +60,14 @@
       .case-img-wrapper {
         position: relative;
         min-height: 450px; /* Slightly taller for story feel */
+        overflow: hidden;
       }
       .case-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(0,0,0,0.7); /* Darker overlay */
+        background: rgba(0,0,0,0.6); /* Default dark overlay */
         z-index: 1;
+        transition: background 0.7s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .case-img-wrapper img {
         position: absolute;
@@ -68,12 +75,35 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease;
+        filter: brightness(0.9);
       }
+      
+      .case-study:hover .case-img-wrapper img {
+        transform: scale(1.03);
+        filter: brightness(1.05);
+      }
+      
+      .case-study:hover .case-overlay {
+        background: rgba(0,0,0,0.2);
+      }
+
       .case-content {
         padding: 4.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        border-left: 4px solid var(--accent-gold);
+        transition: border-color 0.7s ease, background-color 0.7s ease;
+      }
+      
+      .case-study.case-reverse .case-content {
+        border-left: none;
+        border-right: 4px solid var(--accent-gold);
+      }
+
+      .case-study:hover .case-content {
+        border-color: var(--gold);
       }
       .story-line {
         margin-top: 1.5rem;
@@ -113,7 +143,7 @@
           <div class="case-overlay"></div>
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Arquitectura Corporativa">
         </div>
-        <div class="case-content" style="border-left: 4px solid var(--accent-gold);">
+        <div class="case-content">
           <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Confidencial &middot; Operación internacional</div>
           <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px; line-height: 1.2;">Elegir correctamente en un entorno lleno de ruido</h3>
           
@@ -143,7 +173,7 @@
       
       <!-- Caso 2 -->
       <div class="case-study case-reverse">
-        <div class="case-content" style="border-right: 4px solid var(--accent-gold);">
+        <div class="case-content">
           <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Confidencial &middot; Operación internacional</div>
           <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: -0.5px; line-height: 1.2;">Una decisión evitada que protegió capital</h3>
           
