@@ -203,6 +203,25 @@
       border-radius: 30px;
     }
 
+    .market-card h2,
+    .market-card h3,
+    .market-card p {
+      transition: color 0.8s ease, text-shadow 0.8s ease;
+    }
+
+    .market-card:hover h2 {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .market-card:hover h3 {
+      text-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+    }
+
+    .market-card:hover p {
+      color: #FFF;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
     .market-card h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3rem, 5vw, 4.5rem);
