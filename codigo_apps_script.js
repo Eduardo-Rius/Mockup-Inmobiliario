@@ -26,9 +26,15 @@ function doPost(e) {
     const lastRow = sheet.getLastRow();
     const newRowIndex = lastRow + 1;
     
-    // La fórmula de Score basada en el volumen de la columna F (F2, F3, etc.)
-    // Asumiendo que Volumen es la columna F (la 6ta columna)
-    const formulaScore = `=IF(F${newRowIndex}="+10M",5, IF(F${newRowIndex}="3M–10M",4, IF(F${newRowIndex}="1M–3M",3,1)))`;
+    // Cálculo del Score en JavaScript para evitar errores de fórmula (#ERROR!) en hojas en español
+    let scoreNumerico = 1;
+    if (volumen === "+10M") {
+      scoreNumerico = 5;
+    } else if (volumen === "3M–10M") {
+      scoreNumerico = 4;
+    } else if (volumen === "1M–3M") {
+      scoreNumerico = 3;
+    }
 
     // Array con el orden de las columnas:
     // 1:Fecha, 2:Nombre completo, 3:País, 4:Email, 5:Teléfono, 6:Volumen de inversión,
@@ -45,7 +51,7 @@ function doPost(e) {
       objetivo, 
       invertido_fuera, 
       asesor, 
-      formulaScore, // El score dinámico
+      scoreNumerico, // Score calculado en el backend
       estado, 
       notas
     ];
@@ -55,9 +61,8 @@ function doPost(e) {
     
     // ----------- ENVÍO DEL EMAIL AUTOMÁTICO -----------
     
-    // URL de la firma (la imagen alojada en tu Netlify/GitHub)
-    // REEMPLAZA ESTA URL por la ruta real de tu web (ej. https://tudominio.com/Emilio.jpeg)
-    const firmaUrl = "https://tudominio.com/Emilio.jpeg";
+    // Convertimos tu enlace de Google Drive al formato de imagen directa "uc?export=view&id="
+    const firmaUrl = "https://drive.google.com/uc?export=view&id=14yyERpf6hLvRZFyOU_zmu2THBdQLTLGJ";
     
     const emailSubject = "Hemos recibido tu solicitud";
     
