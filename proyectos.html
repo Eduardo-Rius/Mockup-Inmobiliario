@@ -267,6 +267,21 @@
           flex-grow: 1;
           background: var(--bg-card);
         }
+
+        .project-tag {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          z-index: 3;
+          font-size: 0.65rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #C9A84C;
+          background: rgba(0, 0, 0, 0.6);
+          padding: 0.4rem 0.8rem;
+          backdrop-filter: blur(4px);
+          border: 1px solid rgba(201, 168, 76, 0.2);
+        }
       </style>
 
       <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 6rem;">
@@ -275,6 +290,7 @@
         <div class="project-card">
           <div class="project-img-container">
             <div class="project-img-overlay"></div>
+            <div class="project-tag">Off-market &middot; Confidencial</div>
             <img class="project-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Villa de Lujo Marbella">
           </div>
           <div class="project-info">
@@ -288,6 +304,7 @@
         <div class="project-card">
           <div class="project-img-container">
             <div class="project-img-overlay"></div>
+            <div class="project-tag">Activo distressed &middot; Privado</div>
             <img class="project-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Edificio Comercial Polanco">
           </div>
           <div class="project-info">
@@ -301,6 +318,7 @@
         <div class="project-card">
           <div class="project-img-container">
             <div class="project-img-overlay"></div>
+            <div class="project-tag">Pre-construcción &middot; Exclusivo</div>
             <img class="project-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Desarrollo Dubai">
           </div>
           <div class="project-info">
