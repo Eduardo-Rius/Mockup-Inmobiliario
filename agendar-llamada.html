@@ -95,11 +95,11 @@
   </section>
 
   <!-- FORM / CONTACT -->
-  <section id="contacto" class="form-section" style="padding-top: 4rem; min-height: 60vh;">
-    <h2 class="section-title">Inicia la conversación</h2>
-    <p style="color:var(--text-muted); max-width:600px; margin:0 auto;">Agende una llamada de diagnóstico. Evaluaremos si nuestra red y enfoque se alinean con sus objetivos de inversión.</p>
+  <section id="contacto" class="form-section" style="padding-top: 4rem; padding-bottom: 6rem; min-height: 60vh;">
+    <h2 class="section-title" style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Antes de hablar, necesitamos entender si existe alineación.</h2>
+    <p style="color:var(--text-muted); max-width:700px; margin:0 auto; font-size: 1.1rem; line-height: 1.6; text-align: center;">Este proceso no es para todos. Si tu perfil encaja con el tipo de operaciones que gestionamos, te contactaremos en menos de 48 horas.</p>
     
-    <div class="form-container">
+    <div class="form-container" style="max-width: 800px; margin: 4rem auto 0 auto;">
       <form>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
           <div class="form-group">
@@ -107,41 +107,75 @@
             <input type="text" class="form-control" placeholder="Su nombre">
           </div>
           <div class="form-group">
+            <label class="form-label">País de residencia</label>
+            <input type="text" class="form-control" placeholder="Ej. España, México, etc.">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
+          <div class="form-group">
             <label class="form-label">Correo Electrónico</label>
             <input type="email" class="form-control" placeholder="su@email.com">
           </div>
+          <div class="form-group">
+            <label class="form-label">Teléfono (con prefijo internacional)</label>
+            <input type="tel" class="form-control" placeholder="+34 000 000 000">
+          </div>
         </div>
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Volumen de Inversión Estimado</label>
-          <select class="form-control form-select">
-            <option>Seleccione un rango</option>
-            <option>€500K - €1M</option>
-            <option>€1M - €5M</option>
-            <option>+€5M</option>
-          </select>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
+          <div class="form-group">
+            <label class="form-label">Volumen de inversión</label>
+            <select class="form-control form-select">
+              <option value="" disabled selected>Seleccione un rango</option>
+              <option>€1M – €3M</option>
+              <option>€3M – €10M</option>
+              <option>+€10M</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mercado de interés</label>
+            <select class="form-control form-select">
+              <option value="" disabled selected>Seleccione un mercado</option>
+              <option>Europa</option>
+              <option>México</option>
+              <option>Emiratos</option>
+              <option>Indiferente</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Mercado de Interés Principal</label>
-          <select class="form-control form-select">
-            <option>Seleccione un mercado</option>
-            <option>Europa</option>
-            <option>México</option>
-            <option>Emiratos Árabes Unidos</option>
-            <option>Diversificado</option>
-          </select>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:1.5rem;">
+          <div class="form-group">
+            <label class="form-label">Objetivo principal</label>
+            <select class="form-control form-select">
+              <option value="" disabled selected>Seleccione un objetivo</option>
+              <option>Rentabilidad</option>
+              <option>Revalorización</option>
+              <option>Diversificación</option>
+              <option>Preservación</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">¿Has invertido fuera de tu país?</label>
+            <select class="form-control form-select">
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option>Sí</option>
+              <option>No</option>
+            </select>
+          </div>
         </div>
+
         <div class="form-group" style="margin-top:1.5rem;">
-          <label class="form-label">Objetivo Principal</label>
-          <select class="form-control form-select">
-            <option>Seleccione un objetivo</option>
-            <option>Rentabilidad a corto/medio plazo</option>
-            <option>Preservación de capital</option>
-            <option>Diversificación de portafolio</option>
-          </select>
+          <label class="form-label">¿Qué buscas en un asesor?</label>
+          <textarea class="form-control" rows="3" maxlength="200" placeholder="Escriba brevemente lo que valora en un asesor estratégico (máx 200 caracteres)..." style="resize: none;"></textarea>
         </div>
         
         <div style="margin-top: 3rem; text-align: center;">
-          <button type="submit" class="btn btn-gold" style="width:100%; font-size:1rem;">Agendar llamada de diagnóstico (Calendly)</button>
+          <button type="button" class="btn btn-gold" onclick="document.getElementById('form-success-msg').style.display='block'; this.style.display='none';" style="width:100%; font-size:1.1rem; padding: 1.2rem;">Enviar mi perfil de inversión</button>
+          <p id="form-success-msg" style="display: none; color: var(--gold); font-size: 1.1rem; border: 1px solid var(--accent-gold); padding: 1.5rem; background: rgba(201,168,76,0.1);">
+            Hemos recibido tu información. Si existe alineación con nuestro perfil de cliente, te contactaremos en menos de 48 horas.
+          </p>
         </div>
       </form>
     </div>
