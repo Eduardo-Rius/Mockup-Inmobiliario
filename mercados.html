@@ -33,30 +33,210 @@
     </div>
   </nav>
 
-  <!-- MERCADOS -->
-  <section id="mercados" style="min-height: 80vh;">
-    <h2 class="section-title">Presencia global, <br><span>conocimiento local</span></h2>
-    <div class="markets-grid">
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>Europa</h3>
-          <p>Activos de preservación de capital en Madrid, Londres y París.</p>
-        </div>
+  <style>
+    /* Estilos específicos de la página de Mercados */
+    .markets-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10rem 2rem 6rem 2rem;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .markets-bg-image {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80'); /* Global connection map vibe */
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      filter: grayscale(100%) contrast(1.2);
+      z-index: 1;
+    }
+
+    .markets-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, #000 80%);
+      z-index: 2;
+    }
+
+    .markets-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+    }
+
+    .markets-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 500;
+      color: #FFF;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .markets-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .markets-support-text {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @keyframes smoothReveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal-1 { opacity: 0; animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.2s; }
+    .reveal-2 { opacity: 0; animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.4s; }
+    .reveal-3 { opacity: 0; animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; animation-delay: 0.6s; }
+
+    /* Rediseño de las regiones para no parecer catálogo */
+    .strategic-regions {
+      padding: 8rem 2rem;
+      background: var(--bg-main);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .region-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 8rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .region-row.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 992px) {
+      .region-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+      }
+      .region-row:nth-child(even) .region-text {
+        order: -1;
+      }
+    }
+
+    .region-image {
+      width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      filter: grayscale(80%) contrast(1.1);
+      transition: filter 0.5s ease;
+    }
+
+    .region-image:hover {
+      filter: grayscale(0%) contrast(1.1);
+    }
+
+    .region-image::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .region-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #FFF;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .region-text h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 2px;
+      background: var(--gold);
+    }
+
+    .region-text p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+  </style>
+
+  <!-- MERCADOS HERO -->
+  <header class="markets-hero">
+    <div class="markets-bg-image"></div>
+    <div class="markets-overlay"></div>
+    
+    <div class="markets-hero-content">
+      <h1 class="markets-title reveal-1">Mercados donde el acceso marca la diferencia</h1>
+      <p class="markets-subtitle reveal-2">
+        Europa, México y Emiratos Árabes Unidos no son solo ubicaciones. Son contextos de alto valor donde el timing, la red correcta y el criterio estratégico definen el resultado.
+      </p>
+      <p class="markets-support-text reveal-3">
+        No operamos por geografía. Operamos donde existen oportunidades reales, relaciones correctas y condiciones para proteger y hacer crecer capital.
+      </p>
+    </div>
+  </header>
+
+  <!-- REGIONES ESTRATÉGICAS (REDISEÑO) -->
+  <section class="strategic-regions">
+    <!-- Europa -->
+    <div class="region-row scroll-reveal">
+      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="region-text">
+        <h3>Europa</h3>
+        <p>Hub financiero y refugio histórico para la preservación de capital. Centramos nuestra estrategia en mercados consolidados como Madrid, Londres y París.</p>
+        <p>El valor aquí no reside en el volumen, sino en la adquisición de activos atemporales que ofrecen estabilidad estructural a largo plazo y beneficios fiscales optimizados.</p>
       </div>
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>México</h3>
-          <p>Alto rendimiento y desarrollo en CDMX, Riviera Maya y Los Cabos.</p>
-        </div>
+    </div>
+
+    <!-- México -->
+    <div class="region-row scroll-reveal">
+      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="region-text">
+        <h3>México</h3>
+        <p>Un entorno de alto crecimiento con ventanas de oportunidad asimétricas. Nos posicionamos en zonas de máxima expansión como CDMX, Riviera Maya y Los Cabos.</p>
+        <p>Conocemos el tejido local y las barreras de entrada, permitiendo a nuestros clientes estructurar operaciones de alto rendimiento y desarrollo con riesgo controlado.</p>
       </div>
-      <div class="market-block">
-        <div class="market-bg" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="market-content">
-          <h3>EAU</h3>
-          <p>Mercados emergentes de lujo e inversión libre de impuestos en Dubái.</p>
-        </div>
+    </div>
+
+    <!-- EAU -->
+    <div class="region-row scroll-reveal">
+      <div class="region-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="region-text">
+        <h3>Emiratos Árabes Unidos</h3>
+        <p>El epicentro del capital moderno. Dubái ofrece mercados emergentes de superlujo y estructuras de inversión altamente eficientes y libres de impuestos.</p>
+        <p>Accedemos a operaciones off-market y proyectos exclusivos antes de su comercialización pública, garantizando un posicionamiento temprano y estratégico.</p>
       </div>
     </div>
   </section>
@@ -84,6 +264,19 @@
       } else {
         nav.classList.remove('scrolled');
       }
+    });
+
+    // Scroll reveal for regions
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
     });
   </script>
 </body>
