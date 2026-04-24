@@ -41,7 +41,6 @@
       padding: 0.5rem 2rem 2rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
-      min-height: 85vh;
       align-items: start;
     }
     
@@ -190,6 +189,41 @@
       animation: smoothReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
       animation-delay: 0.3s;
     }
+
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    .scroll-indicator-container {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0 3rem 0;
+      opacity: 0;
+      animation: smoothReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 0.8s;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: bounceSubtle 1.8s ease-in-out infinite;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .scroll-text {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
   </style>
 
   <section id="sobre-sgi" style="background: var(--bg-main);">
@@ -222,6 +256,14 @@
         </div>
       </div>
     </div> <!-- Close founder-grid -->
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator-container">
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span class="scroll-text">Descubrir</span>
+      </div>
+    </div>
 
     <!-- Cierre Centrado -->
     <div class="founder-closing-section reveal-text" style="animation-delay: 0.45s;">
