@@ -14,7 +14,9 @@ function doPost(e) {
     const pais = formData.pais || "";
     const email = formData.email || "";
     const telefono = formData.telefono || "";
-    const volumen = formData.volumen || "";
+    // Agregamos un apóstrofe al inicio para que Google Sheets lo tome como texto literal
+    // y no crea que "+10M" es una fórmula matemática que deba resolver.
+    const volumen = formData.volumen ? "'" + formData.volumen : "";
     const mercado = formData.mercado || "";
     const objetivo = formData.objetivo || "";
     const invertido_fuera = formData.invertido_fuera || "";
@@ -26,13 +28,14 @@ function doPost(e) {
     const lastRow = sheet.getLastRow();
     const newRowIndex = lastRow + 1;
     
-    // Cálculo del Score en JavaScript para evitar errores de fórmula (#ERROR!) en hojas en español
+    // Eliminamos el apóstrofe para que la lógica de JS funcione correctamente
+    const volumenLimpio = formData.volumen || "";
     let scoreNumerico = 1;
-    if (volumen === "+10M") {
+    if (volumenLimpio === "+10M") {
       scoreNumerico = 5;
-    } else if (volumen === "3M–10M") {
+    } else if (volumenLimpio === "3M–10M") {
       scoreNumerico = 4;
-    } else if (volumen === "1M–3M") {
+    } else if (volumenLimpio === "1M–3M") {
       scoreNumerico = 3;
     }
 
@@ -61,10 +64,21 @@ function doPost(e) {
     
     // ----------- ENVÍO DEL EMAIL AUTOMÁTICO -----------
     
-    // Convertimos tu enlace de Google Drive al formato de imagen directa "uc?export=view&id="
-    const firmaUrl = "https://drive.google.com/uc?export=view&id=14yyERpf6hLvRZFyOU_zmu2THBdQLTLGJ";
+    // El ID de tu imagen en Google Drive
+    const imageId = "14yyERpf6hLvRZFyOU_zmu2THBdQLTLGJ";
+    let firmaBlob = null;
+    
+    try {
+      firmaBlob = DriveApp.getFileById(imageId).getBlob();
+    } catch (e) {
+      console.log("No se pudo obtener la imagen de Drive. Asegúrate de que los permisos de la imagen sean públicos.");
+    }
     
     const emailSubject = "Hemos recibido tu solicitud";
+    
+    // Usamos 'cid:firmaLogo' para inyectar la imagen directamente en el cuerpo del correo.
+    // Así evitamos bloqueos de Outlook o firewalls corporativos.
+    let imgTag = firmaBlob ? '<img src="cid:firmaLogo" alt="Firma Emilio" style="max-width: 200px; height: auto;" />' : '';
     
     const emailHtmlBody = `
       <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333; line-height: 1.6;">
@@ -73,15 +87,24 @@ function doPost(e) {
         <p>Si encaja con nuestro enfoque, recibirás una respuesta personal en un plazo máximo de 48 horas.</p>
         <p>Un saludo,</p>
         <br>
-        <img src="${firmaUrl}" alt="Firma Emilio" style="max-width: 200px; height: auto;" />
+        ${imgTag}
       </div>
     `;
 
     // Enviar correo a quien rellenó el formulario
     if (email) {
-      GmailApp.sendEmail(email, emailSubject, "", {
-        htmlBody: emailHtmlBody
-      });
+      if (firmaBlob) {
+        GmailApp.sendEmail(email, emailSubject, "", {
+          htmlBody: emailHtmlBody,
+          inlineImages: {
+            firmaLogo: firmaBlob
+          }
+        });
+      } else {
+        GmailApp.sendEmail(email, emailSubject, "", {
+          htmlBody: emailHtmlBody
+        });
+      }
     }
     
     return ContentService.createTextOutput(JSON.stringify({ "result": "success" }))
