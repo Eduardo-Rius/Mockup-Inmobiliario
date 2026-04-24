@@ -34,136 +34,150 @@
   </nav>
 
   <style>
-    .manifesto-section {
-      padding: 12rem 2rem 8rem 2rem;
-      min-height: 80vh;
-      background: var(--bg-main);
-      display: flex;
-      flex-direction: column;
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      padding: 10rem 2rem 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 85vh;
       align-items: center;
-      text-align: center;
     }
     
-    .manifesto-block {
-      max-width: 800px;
-      margin-bottom: 6rem;
+    @media (min-width: 992px) {
+      .founder-grid {
+        grid-template-columns: 45% 1fr;
+        gap: 6rem;
+      }
     }
 
-    .manifesto-text {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    .founder-img-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 0 40px rgba(201, 168, 76, 0.15); /* Subtle gold glow */
+    }
+
+    .founder-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    .founder-img-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.8s ease;
+      position: relative;
+      z-index: 1;
+      border-radius: 4px;
+    }
+    
+    .founder-img-wrapper:hover img {
+      filter: grayscale(0%);
+    }
+
+    .founder-title {
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-serif);
+      color: #FFF;
+      letter-spacing: -1px;
+    }
+
+    .founder-subtitle {
+      font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+
+    .founder-tag {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 3.5rem;
+      display: inline-block;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding-bottom: 0.8rem;
+    }
+
+    .founder-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #CCC;
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-highlight-block {
+      margin: 3.5rem 0;
+      padding-left: 2rem;
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .founder-highlight-block p {
+      font-size: 1.4rem;
+      color: #FFF;
+      font-style: italic;
       line-height: 1.5;
-      color: #EAEAEA;
-      font-weight: 300;
-      letter-spacing: -0.5px;
       margin: 0;
     }
-
-    .manifesto-highlight {
+    
+    .founder-closing {
+      font-size: 1.15rem;
       color: var(--gold);
-      font-style: italic;
-    }
-
-    .manifesto-divider {
-      width: 1px;
-      height: 60px;
-      background: rgba(201, 168, 76, 0.3); /* Subtle gold line */
-      margin: 0 auto 6rem auto;
-    }
-    
-    .founder-signature-block {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .founder-portrait {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1.5rem;
-      filter: grayscale(100%);
-      transition: filter 0.6s ease, transform 0.6s ease;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .founder-portrait:hover {
-      filter: grayscale(0%);
-      transform: scale(1.05);
+      line-height: 1.6;
+      margin-bottom: 3.5rem;
     }
   </style>
 
-  <!-- MANIFESTO SGI -->
-  <section class="manifesto-section">
-    
-    <!-- BLOQUE 1 -->
-    <div class="manifesto-block">
-      <p class="manifesto-text">
-        No somos una inmobiliaria.<br>
-        Ni un intermediario más.
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem;">
-        SGI nace de una premisa simple:<br>
-        en el nivel donde operan nuestros clientes,<br>
-        <span class="manifesto-highlight">el acceso y el criterio valen más que cualquier activo.</span>
-      </p>
+  <section id="sobre-sgi" style="background: var(--bg-main);">
+    <div class="founder-grid">
+      
+      <!-- IMAGE COLUMN -->
+      <div class="founder-img-wrapper">
+        <img src="Emilio.jpeg" alt="Emili Rivelles - Founder & CEO">
+      </div>
+      
+      <!-- CONTENT COLUMN -->
+      <div>
+        <h1 class="founder-title">Conexiones que lo cambian todo</h1>
+        <p class="founder-subtitle">En los mercados de alto valor, la diferencia no está en buscar más oportunidades. Está en saber con quién hablar, cuándo entrar y qué decisión evitar.</p>
+        
+        <span class="founder-tag">Fundador & CEO &middot; Estrategia global &middot; Acceso privado</span>
+        
+        <p class="founder-text">
+          Durante más de 25 años, Emili Rivelles ha construido una red internacional basada en confianza, discreción y resultados.
+        </p>
+        <p class="founder-text">
+          SGI nace de esa experiencia: conectar a inversores, empresarios y patrimonios privados con oportunidades que no siempre aparecen en el mercado visible.
+        </p>
+        <p class="founder-text">
+          No se trata de mostrar opciones.<br>
+          Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
+        </p>
+
+        <div class="founder-highlight-block">
+          <p>Una buena conexión puede cambiar una operación.<br>
+          La conexión correcta puede cambiar una cartera completa.</p>
+        </div>
+
+        <p class="founder-closing">
+          SGI trabaja con perfiles que entienden el valor del acceso, la discreción y el criterio antes de tomar decisiones de alto impacto.
+        </p>
+
+        <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">Solicitar evaluación privada</a>
+      </div>
     </div>
-
-    <div class="manifesto-divider"></div>
-
-    <!-- BLOQUE 2 -->
-    <div class="manifesto-block">
-      <p class="manifesto-text">
-        Más de 25 años operando en mercados inmobiliarios internacionales nos han permitido construir algo que no se compra:
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem; font-weight: 500; color: #FFF; font-size: clamp(2rem, 4vw, 2.8rem);">
-        red, acceso y criterio.
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem;">
-        Europa, México y Emiratos no son geografías.<br>
-        Son entornos donde sabemos cómo se mueve el capital<br>
-        y quién toma las decisiones.
-      </p>
-    </div>
-
-    <div class="manifesto-divider"></div>
-
-    <!-- BLOQUE 3 -->
-    <div class="manifesto-block">
-      <p class="manifesto-text">
-        No trabajamos con todos los inversores.
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem;">
-        Trabajamos con aquellos que entienden que:<br>
-        no se trata de ver más oportunidades,<br>
-        sino de acceder a las correctas.
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem;">
-        Y que el coste de una mala decisión<br>
-        <span class="manifesto-highlight">siempre es mayor que el coste de evitarla.</span>
-      </p>
-    </div>
-
-    <div class="manifesto-divider"></div>
-
-    <!-- BLOQUE 4 -->
-    <div class="manifesto-block" style="margin-bottom: 4rem;">
-      <p class="manifesto-text" style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: var(--text-muted);">
-        Si estás buscando activos, probablemente no somos lo que necesitas.
-      </p>
-      <p class="manifesto-text" style="margin-top: 2rem; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; color: #FFF;">
-        Si estás buscando tomar decisiones correctas,<br>
-        entonces tiene sentido hablar.
-      </p>
-    </div>
-
-    <!-- Cierre / CTA / Signature -->
-    <div class="founder-signature-block">
-      <img src="Emilio.jpeg" alt="Emilio Rivelles" class="founder-portrait">
-      <img src="Logo.png" alt="SGI Signature" style="height:25px; opacity:0.5; margin-bottom: 3rem;">
-      <a href="agendar-llamada.html" class="btn btn-gold" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Agendar llamada de evaluación</a>
-    </div>
-
   </section>
 
   <!-- FOOTER -->
