@@ -175,6 +175,112 @@
         </div>
       </div>
       
+      <div style="text-align: center; margin-top: 8rem; margin-bottom: 4rem;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Portfolio Seleccionado</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Muestra representativa de activos adquiridos, gestionados o posicionados para nuestra cartera de clientes.</p>
+      </div>
+
+      <style>
+        .project-card {
+          background: var(--bg-card);
+          overflow: hidden;
+          position: relative;
+          border-top: 2px solid transparent;
+          transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .project-card:hover {
+          border-top: 2px solid var(--gold);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .project-img-container {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+        }
+        
+        .project-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease;
+          filter: brightness(0.9);
+        }
+
+        .project-img-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.55);
+          transition: background 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+          z-index: 1;
+        }
+        
+        .project-card:hover .project-img {
+          transform: scale(1.03);
+          filter: brightness(1.05);
+        }
+        
+        .project-card:hover .project-img-overlay {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        .project-info {
+          padding: 2.5rem;
+          position: relative;
+          z-index: 2;
+          flex-grow: 1;
+          background: var(--bg-card);
+        }
+      </style>
+
+      <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 6rem;">
+        
+        <!-- Proyecto 1 -->
+        <div class="project-card">
+          <div class="project-img-container">
+            <div class="project-img-overlay"></div>
+            <img class="project-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Villa de Lujo Marbella">
+          </div>
+          <div class="project-info">
+            <h3 style="margin-top:0; font-size: 1.4rem; letter-spacing: -0.5px;">Adquisición Off-Market Marbella</h3>
+            <p style="margin-bottom:1.5rem; font-size:0.85rem; color:var(--accent-gold); text-transform: uppercase; letter-spacing: 1px;">Europa • Residencial Premium</p>
+            <p style="color: #CCC; line-height: 1.6;">Estructuración y compra de una villa de lujo fuera de mercado con un ahorro del 18% sobre el precio real de zona, generando rentabilidad inmediata mediante alquiler vacacional high-end.</p>
+          </div>
+        </div>
+        
+        <!-- Proyecto 2 -->
+        <div class="project-card">
+          <div class="project-img-container">
+            <div class="project-img-overlay"></div>
+            <img class="project-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Edificio Comercial Polanco">
+          </div>
+          <div class="project-info">
+            <h3 style="margin-top:0; font-size: 1.4rem; letter-spacing: -0.5px;">Edificio Comercial Polanco</h3>
+            <p style="margin-bottom:1.5rem; font-size:0.85rem; color:var(--accent-gold); text-transform: uppercase; letter-spacing: 1px;">México • Sector Comercial</p>
+            <p style="color: #CCC; line-height: 1.6;">Reposicionamiento de activo distressed en Ciudad de México. Remodelación integral y renegociación de contratos para triplicar el NOI (Net Operating Income) en 24 meses.</p>
+          </div>
+        </div>
+        
+        <!-- Proyecto 3 -->
+        <div class="project-card">
+          <div class="project-img-container">
+            <div class="project-img-overlay"></div>
+            <img class="project-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Desarrollo Dubai">
+          </div>
+          <div class="project-info">
+            <h3 style="margin-top:0; font-size: 1.4rem; letter-spacing: -0.5px;">Inversión Pre-Construcción Dubai</h3>
+            <p style="margin-bottom:1.5rem; font-size:0.85rem; color:var(--accent-gold); text-transform: uppercase; letter-spacing: 1px;">EAU • Desarrollo Inmobiliario</p>
+            <p style="color: #CCC; line-height: 1.6;">Identificación de oportunidad de entrada temprana en el distrito financiero. Adquisición de portfolio de 5 unidades con salida programada pre-entrega logrando 45% ROI anualizado.</p>
+          </div>
+        </div>
+      </div>
+      
       <div style="text-align: center; color: var(--text-muted); font-style: italic; font-size: 1.2rem; margin-bottom: 4rem; padding-top: 2rem;">
         No todas las operaciones se pueden mostrar.<br>
         Pero todas se trabajan con el mismo criterio.
