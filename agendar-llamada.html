@@ -35,12 +35,32 @@
 
 
 
+  <style>
+    .form-section-adjusted {
+      padding-top: clamp(120px, 15vh, 140px); 
+      padding-bottom: 6rem; 
+      min-height: 80vh;
+    }
+    .eyebrow-text {
+      color: var(--gold); 
+      font-size: 0.85rem; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      margin-bottom: 1.5rem; 
+      display: block;
+      text-align: center;
+    }
+  </style>
+
   <!-- FORM / CONTACT -->
-  <section id="contacto" class="form-section" style="padding-top: 4rem; padding-bottom: 6rem; min-height: 60vh;">
-    <h2 class="section-title" style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">Antes de hablar, necesitamos entender si existe alineación.</h2>
-    <p style="color:var(--text-muted); max-width:700px; margin:0 auto; font-size: 1.1rem; line-height: 1.6; text-align: center;">Este proceso no es para todos. Si tu perfil encaja con el tipo de operaciones que gestionamos, te contactaremos en menos de 48 horas.</p>
+  <section id="contacto" class="form-section form-section-adjusted">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <span class="eyebrow-text">Solicitud privada de evaluación</span>
+      <h2 class="section-title" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 2rem; line-height: 1.2;">Antes de hablar, necesitamos entender si existe alineación.</h2>
+      <p style="color:var(--text-muted); max-width:700px; margin:0 auto; font-size: 1.15rem; line-height: 1.6;">Este proceso no es para todos. Si tu perfil encaja con el tipo de operaciones que gestionamos, te contactaremos en menos de 48 horas.</p>
+    </div>
     
-    <div class="form-container" style="max-width: 800px; margin: 4rem auto 0 auto;">
+    <div class="form-container" style="max-width: 800px; margin: 5rem auto 0 auto;">
       <form>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
           <div class="form-group">
