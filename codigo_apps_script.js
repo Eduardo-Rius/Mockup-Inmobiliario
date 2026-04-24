@@ -66,12 +66,15 @@ function doPost(e) {
     
     // El ID de tu imagen en Google Drive
     const imageId = "14yyERpf6hLvRZFyOU_zmu2THBdQLTLGJ";
+    const imageUrl = "https://drive.google.com/uc?export=download&id=" + imageId;
     let firmaBlob = null;
     
     try {
-      firmaBlob = DriveApp.getFileById(imageId).getBlob();
+      // Descargamos la imagen como Blob usando UrlFetchApp en lugar de DriveApp
+      // Esto evita bloqueos de permisos de Google Drive
+      firmaBlob = UrlFetchApp.fetch(imageUrl).getBlob().setName("FirmaEmilio.jpeg");
     } catch (e) {
-      console.log("No se pudo obtener la imagen de Drive. Asegúrate de que los permisos de la imagen sean públicos.");
+      console.log("Error al obtener la imagen: " + e.message);
     }
     
     const emailSubject = "Hemos recibido tu solicitud";
