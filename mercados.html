@@ -128,12 +128,20 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 5rem 4rem;
-      background-size: cover;
-      background-position: center;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.8s ease;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       opacity: 0;
       transform: translateY(40px);
+    }
+
+    .market-card-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.1) brightness(0.9);
+      transition: filter 0.8s ease, transform 0.8s ease;
+      z-index: 0;
     }
 
     .market-card.is-visible {
@@ -146,16 +154,21 @@
       box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(201, 168, 76, 0.15);
     }
 
+    .market-card:hover .market-card-bg {
+      filter: contrast(1.2) brightness(1.05);
+      transform: scale(1.03); /* slight zoom for sharpness/depth feeling */
+    }
+
     .market-card-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.6) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.65) 100%);
       z-index: 1;
       transition: background 0.8s ease;
     }
 
     .market-card:hover .market-card-overlay {
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.4) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.25) 100%);
     }
 
     .market-card-content {
@@ -276,7 +289,8 @@
   <!-- TARJETAS DE MERCADOS PREMIUM -->
   <section class="markets-cards-section">
     <!-- EUROPA -->
-    <div class="market-card scroll-reveal" style="background-image: url('Monaco.webp');">
+    <div class="market-card scroll-reveal">
+      <div class="market-card-bg" style="background-image: url('Monaco.webp');"></div>
       <div class="market-card-overlay"></div>
       <div class="market-card-content">
         <span class="market-tag">Barcelona &middot; Mónaco &middot; Mercados prime</span>
@@ -288,7 +302,8 @@
     </div>
 
     <!-- MÉXICO -->
-    <div class="market-card scroll-reveal" style="background-image: url('RivieraMaya.webp');">
+    <div class="market-card scroll-reveal">
+      <div class="market-card-bg" style="background-image: url('RivieraMaya.webp');"></div>
       <div class="market-card-overlay"></div>
       <div class="market-card-content">
         <span class="market-tag">Riviera Maya &middot; Desarrollo &middot; Alto potencial</span>
@@ -300,7 +315,8 @@
     </div>
 
     <!-- EAU -->
-    <div class="market-card scroll-reveal" style="background-image: url('https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1600&q=80');">
+    <div class="market-card scroll-reveal">
+      <div class="market-card-bg" style="background-image: url('https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1600&q=80');"></div>
       <div class="market-card-overlay"></div>
       <div class="market-card-content">
         <span class="market-tag">Dubái &middot; Burj Khalifa &middot; Capital global</span>
