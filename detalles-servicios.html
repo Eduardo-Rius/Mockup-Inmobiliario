@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Servicios | SGI Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .details-hero {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+    .details-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      color: #FFF;
+    }
+    .details-hero p {
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+    
+    .detailed-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .detail-card {
+      background: #0D0D0D;
+      padding: 3.5rem 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .detail-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+    
+    .detail-card:hover {
+      transform: translateY(-8px);
+      background: #111111;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    .detail-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .detail-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      color: #FFF;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    
+    .detail-card p {
+      font-size: 1.05rem;
+      color: #A0A0A0;
+      line-height: 1.7;
+      flex-grow: 1;
+      font-weight: 300;
+    }
+    
+    .back-action {
+      text-align: center;
+      margin-top: 7rem;
+    }
+  </style>
+</head>
+<body class="internal-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="SGI Consulting Group">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+      </ul>
+      <div class="lang-selector">
+        <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
+      </div>
+      <a href="agendar-llamada.html" class="nav-cta">Agendar llamada</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- DETALLE DE SERVICIOS -->
+  <section id="detalle-servicios" style="background: var(--bg-dark); min-height: 80vh; padding-bottom: 6rem;">
+    
+    <div class="details-hero">
+      <h2 style="font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 1.5rem;">
+        Catálogo Completo
+      </h2>
+      <h1>Nuestros Servicios</h1>
+      <p>
+        Un portafolio integral diseñado para conectar, estructurar y potenciar tus oportunidades de negocio al más alto nivel, asegurando un acompañamiento estratégico en cada paso de tu expansión.
+      </p>
+    </div>
+
+    <div class="detailed-services-grid">
+      
+      <div class="detail-card">
+        <h3>Conexiones Estratégicas de Alto Valor</h3>
+        <p>Acceso directo a decisores, inversores, corporaciones e instituciones clave para acelerar oportunidades de negocio.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Intermediación Comercial Internacional</h3>
+        <p>Facilitamos acuerdos comerciales nacionales e internacionales entre empresas, proveedores, compradores y partners estratégicos.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Desarrollo y Expansión de Negocio</h3>
+        <p>Identificación y apertura de nuevas oportunidades de expansión, alianzas y crecimiento empresarial.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Acceso a Mercados Estratégicos</h3>
+        <p>Conectamos empresas con mercados de difícil acceso mediante relaciones y networking de alto nivel.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Networking Ejecutivo & Relaciones Institucionales</h3>
+        <p>Generamos vínculos estratégicos con entidades públicas, privadas y líderes sectoriales.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Alianzas Estratégicas e Inversión</h3>
+        <p>Creación de partnerships comerciales, tecnológicos y financieros orientados a resultados.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Consultoría en Expansión Internacional</h3>
+        <p>Asesoramiento estratégico para empresas que buscan posicionarse y crecer en nuevos mercados.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Captación de Inversión y Partners</h3>
+        <p>Conexión con inversores, fondos y socios estratégicos para proyectos empresariales y corporativos.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Commodities & Trade Connections</h3>
+        <p>Intermediación y conexiones internacionales en sectores de commodities, energía y agroalimentación.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Real Estate Strategic Connections</h3>
+        <p>Generación de oportunidades y conexiones estratégicas dentro del sector inmobiliario e inversión.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Innovación, IA y Transformación Empresarial</h3>
+        <p>Integración de soluciones innovadoras e inteligencia artificial para potenciar competitividad y eficiencia.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Representación y Negociación Estratégica</h3>
+        <p>Actuamos como puente de confianza entre empresas, líderes e inversores para facilitar negociaciones y acuerdos.</p>
+      </div>
+
+    </div>
+
+    <div class="back-action">
+      <a href="servicios.html" class="btn btn-outline" style="padding: 1rem 2.5rem; font-size: 0.85rem;">
+        &larr; Volver a la visión general de servicios
+      </a>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
+    </div>
+    <div>
+      &copy; 2026 SGI Consulting Group. Todos los derechos reservados.
+    </div>
+    <div>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Privacidad</a>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Términos</a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
