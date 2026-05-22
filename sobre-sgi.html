@@ -189,11 +189,17 @@
       overflow: hidden;
       box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95);
       z-index: 2;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.22);
       background: radial-gradient(circle at 50% 30%, rgba(201, 168, 76, 0.05) 0%, rgba(10, 10, 10, 1) 100%);
       opacity: 0;
       transform: scale(0.97) translateY(15px);
       animation: portraitEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      transition: border-color 0.8s ease, box-shadow 0.8s ease;
+    }
+
+    .hero-portrait-wrapper:hover {
+      border-color: rgba(201, 168, 76, 0.45);
+      box-shadow: 0 45px 90px rgba(0, 0, 0, 0.95), 0 0 35px rgba(201, 168, 76, 0.18);
     }
 
     .hero-portrait-wrapper::after {
@@ -210,12 +216,13 @@
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(12%) contrast(1.05) brightness(0.92);
-      transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: grayscale(100%);
+      transition: filter 0.8s ease, transform 0.8s ease;
     }
 
     .hero-portrait-wrapper:hover .hero-portrait-img {
-      transform: scale(1.03);
+      filter: grayscale(0%) contrast(1.05) brightness(0.95);
+      transform: scale(1.015);
     }
 
     /* --- 2. FOUNDER SECTION - EMILIO (NEW) --- */
@@ -879,7 +886,7 @@
       <div class="hero-image-col">
         <div class="hero-image-glow"></div>
         <div class="hero-portrait-wrapper">
-          <img src="Eduardo Rius.png" alt="Eduardo Rius" class="hero-portrait-img">
+          <img src="Emilio 4k.jpeg" alt="Emilio Rivelles - Founder & CEO" class="hero-portrait-img">
         </div>
       </div>
 
