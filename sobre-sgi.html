@@ -21,6 +21,20 @@
     body.internal-page {
       background: var(--bg-absolute-black) !important;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* --- Noise Grain Texture Overlay --- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.013;
+      pointer-events: none;
+      z-index: 9999;
     }
 
     /* --- NAVBAR MODIFICATIONS FOR OVERLAY --- */
@@ -50,7 +64,7 @@
       transform: translateY(-6px) rotate(-45deg);
     }
 
-    /* --- 1. HERO SECTION CINEMATOGRÁFICO --- */
+    /* --- 1. HERO SECTION CINEMATOGRÁFICO (DO NOT TOUCH) --- */
     #sobre-sgi-hero {
       padding: 0 !important; /* Reset default top padding */
       min-height: 100vh;
@@ -204,21 +218,15 @@
       transform: scale(1.03);
     }
 
-    /* --- 2. BLOQUE "LO QUE NOS UNE" --- */
-    #lo-que-nos-une {
+    /* --- 2. FOUNDER SECTION - EMILIO (NEW) --- */
+    #founder-emilio-section {
       background: var(--bg-absolute-black);
       padding: 12rem 2rem;
       position: relative;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
     }
 
-    #gold-particles-canvas {
+    #gold-particles-canvas-founder {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -227,84 +235,208 @@
       z-index: 1;
     }
 
-    .editorial-container {
-      position: relative;
-      z-index: 2;
-      max-width: 920px;
-      padding: 0 1rem;
-    }
-
-    .editorial-accent {
-      font-family: var(--font-serif);
-      color: var(--gold);
-      font-size: 1.5rem;
-      font-style: italic;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      display: block;
-    }
-
-    .editorial-text {
-      font-family: var(--font-serif);
-      color: #FFF;
-      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
-      line-height: 1.85;
-      font-weight: 300;
-      margin-bottom: 3.5rem;
-      letter-spacing: -0.2px;
-    }
-
-    .editorial-divider {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    .founder-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4.5rem;
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    /* --- 3. SECCIÓN LEADERSHIP & STRATEGIC ADVISORS --- */
-    #advisors-section {
-      background: var(--bg-absolute-black);
-      padding: 12rem 2rem;
+      align-items: center;
       position: relative;
       z-index: 2;
     }
 
-    .advisors-header {
-      text-align: center;
-      margin-bottom: 6rem;
+    @media (min-width: 992px) {
+      .founder-container {
+        grid-template-columns: 43% 57%;
+        gap: 6.5rem;
+      }
     }
 
-    .advisors-pretitle {
+    /* Left Column: Emilio Portrait */
+    .founder-portrait-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95);
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      background: #050505;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-portrait-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 5, 5, 0.45) 0%, transparent 35%),
+                  radial-gradient(circle at center, transparent 40%, rgba(5, 5, 5, 0.25) 100%);
+      pointer-events: none;
+    }
+
+    .founder-portrait-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      /* Cinematic warm grading, NOT black and white */
+      filter: contrast(1.08) brightness(0.96) saturate(1.04) sepia(6%);
+      transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-portrait-wrapper:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 168, 76, 0.45);
+      box-shadow: 0 45px 90px rgba(0, 0, 0, 0.95), 0 0 35px rgba(201, 168, 76, 0.18);
+    }
+
+    .founder-portrait-wrapper:hover .founder-portrait-img {
+      transform: scale(1.03);
+    }
+
+    /* Right Column: Emilio content */
+    .founder-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .founder-eyebrow {
       font-family: var(--font-sans);
       color: var(--gold);
       font-size: 0.85rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       font-weight: 600;
-      margin-bottom: 1rem;
-      display: block;
+      margin-bottom: 1.2rem;
     }
 
-    .advisors-title {
+    .founder-headline {
       font-family: var(--font-serif);
       color: #FFF;
-      font-size: clamp(2.2rem, 3.8vw, 3rem);
-      font-weight: 400;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: 1.2;
+      font-weight: 300;
+      margin-bottom: 1.8rem;
       letter-spacing: -0.5px;
+    }
+
+    .founder-subtext {
+      font-family: var(--font-sans);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+
+    .founder-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 2.2rem;
+    }
+
+    .founder-bio-text {
+      font-family: var(--font-sans);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .founder-bio-text p {
+      margin-bottom: 1.5rem;
+    }
+    .founder-bio-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2.5rem;
+    }
+
+    .founder-tag-pill {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      padding: 0.5rem 1.1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      background: rgba(201, 168, 76, 0.02);
+      font-weight: 500;
+    }
+
+    /* --- 3. SECTION DIVIDER PREMIUM (NEW) --- */
+    .team-divider-section {
+      background: var(--bg-absolute-black);
+      padding: 9rem 2rem 5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .team-divider-line {
+      width: 1px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin-bottom: 3rem;
+    }
+
+    .team-divider-title {
+      font-family: var(--font-serif);
+      color: #FFF;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+    }
+
+    /* --- 4. STRATEGIC ADVISORS GRID (RESTYLED) --- */
+    #advisors-section {
+      background: var(--bg-absolute-black);
+      padding: 6rem 2rem 12rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    #gold-particles-canvas-advisors {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .advisors-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 3.5rem;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .advisors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
     }
 
     @media (min-width: 992px) {
       .advisors-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
+        gap: 3.5rem;
       }
     }
 
@@ -444,7 +576,7 @@
       transform: translateX(4px);
     }
 
-    /* --- 4. TRAJECTORY MODAL --- */
+    /* --- 5. TRAJECTORY MODAL --- */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -541,7 +673,7 @@
       margin-bottom: 0;
     }
 
-    /* --- 5. PREMIUM CLOSING SECTION & FOOTER --- */
+    /* --- 6. PREMIUM CLOSING SECTION & FOOTER --- */
     .premium-closing-section {
       background: var(--bg-absolute-black);
       padding: 12rem 2rem 14rem 2rem;
@@ -619,7 +751,7 @@
       opacity: 0.7;
     }
 
-    /* --- 6. SCROLL REVEAL ANIMATIONS --- */
+    /* --- 7. SCROLL REVEAL ANIMATIONS --- */
     .reveal-element {
       opacity: 0;
       transform: translateY(45px);
@@ -727,7 +859,7 @@
     </div>
   </nav>
 
-  <!-- 1. HERO SECTION -->
+  <!-- 1. HERO SECTION (DO NOT TOUCH) -->
   <section id="sobre-sgi-hero">
     <div class="hero-container">
       
@@ -754,46 +886,78 @@
     </div>
   </section>
 
-  <!-- 2. LO QUE NOS UNE -->
-  <section id="lo-que-nos-une">
-    <canvas id="gold-particles-canvas"></canvas>
+  <!-- 2. FOUNDER SECTION - EMILIO -->
+  <section id="founder-emilio-section">
+    <canvas id="gold-particles-canvas-founder"></canvas>
     
-    <div class="editorial-container">
-      <span class="editorial-accent reveal-element">SGI no es una firma tradicional.</span>
-      <p class="editorial-text reveal-element">
-        Es una red estratégica formada por perfiles con experiencia internacional en inversión, tecnología, expansión empresarial, innovación y desarrollo de oportunidades de alto valor.
-      </p>
-      <p class="editorial-text reveal-element">
-        Cada miembro aporta relaciones, visión y experiencia real en mercados donde el acceso correcto cambia completamente el resultado.
-      </p>
-      <div class="editorial-divider reveal-element"></div>
+    <div class="founder-container">
+      
+      <!-- Left image -->
+      <div class="founder-portrait-wrapper reveal-element">
+        <img src="Emilio 4k.jpeg" alt="Emili Rivelles - Founder & CEO" class="founder-portrait-img">
+      </div>
+
+      <!-- Right content -->
+      <div class="founder-content reveal-element">
+        <span class="founder-eyebrow">FOUNDER & CEO</span>
+        <h2 class="founder-headline">Conexiones que lo cambian todo.</h2>
+        <p class="founder-subtext">
+          En los mercados de alto valor, la diferencia no está en buscar más oportunidades. Está en saber con quién hablar, cuándo entrar y qué decisión evitar.
+        </p>
+        
+        <div class="founder-divider"></div>
+        
+        <div class="founder-bio-text">
+          <p>
+            Más de 25 años construyendo relaciones en mercados internacionales de alto valor han permitido desarrollar algo que no se compra: red, acceso y criterio.
+          </p>
+          <p>
+            SGI nace de esa experiencia: conectar a inversionistas, empresarios y patrimonios privados con oportunidades que no siempre aparecen en el mercado visible.
+          </p>
+          <p>
+            No se trata de mostrar opciones.<br>
+            Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
+          </p>
+        </div>
+
+        <div class="founder-tags">
+          <span class="founder-tag-pill">Estrategia Global</span>
+          <span class="founder-tag-pill">Acceso Privado</span>
+          <span class="founder-tag-pill">Inversión Internacional</span>
+          <span class="founder-tag-pill">Relaciones Estratégicas</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- 3. LEADERSHIP & STRATEGIC ADVISORS -->
+  <!-- 3. SECTION DIVIDER PREMIUM -->
+  <div class="team-divider-section">
+    <div class="team-divider-line reveal-element"></div>
+    <h2 class="team-divider-title reveal-element">Leadership & Strategic Advisors</h2>
+  </div>
+
+  <!-- 4. STRATEGIC ADVISORS GRID -->
   <section id="advisors-section">
-    <div class="advisors-header">
-      <span class="advisors-pretitle reveal-element">LEADERSHIP & STRATEGIC ADVISORS</span>
-      <h2 class="advisors-title reveal-element">Strategic Board</h2>
-    </div>
+    <canvas id="gold-particles-canvas-advisors"></canvas>
 
     <div class="advisors-grid reveal-stagger">
       
       <!-- Card 1: Amanda Hun -->
       <div class="advisor-card reveal-element">
         <div class="advisor-img-wrapper">
-          <img src="Amanda Hun.png" alt="Amanda Hun" class="advisor-img">
+          <img src="d2f85fca-580c-4be0-b0cb-390f2cba745a.png" onerror="this.onerror=null; this.src='Amanda Hun.png';" alt="Amanda Hun" class="advisor-img">
         </div>
         <div class="advisor-info">
           <div>
             <h3 class="advisor-name">Amanda Hun</h3>
-            <span class="advisor-role">CEO & Strategic Investment Advisor</span>
+            <span class="advisor-role">Strategic Investment Advisor</span>
             <p class="advisor-summary">
-              Especialista en inversión internacional, desarrollo estratégico y conexiones globales de alto impacto entre Europa, Emiratos y Latinoamérica.
+              Especialista en inversión internacional, desarrollo estratégico y conexiones globales entre Europa, Emiratos y Latinoamérica.
             </p>
           </div>
           <a href="#" class="advisor-btn" data-advisor="amanda">
-            <span>Ver trayectoria</span>
+            <span>Ver perfil</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -802,18 +966,18 @@
       <!-- Card 2: Diego Antón -->
       <div class="advisor-card reveal-element">
         <div class="advisor-img-wrapper">
-          <img src="Diego Anton.png" alt="Diego Antón" class="advisor-img">
+          <img src="af451fc4-85cd-4e30-b2b5-df6b5eab54d9.png" onerror="this.onerror=null; this.src='Diego Anton.png';" alt="Diego Antón" class="advisor-img">
         </div>
         <div class="advisor-info">
           <div>
             <h3 class="advisor-name">Diego Antón</h3>
             <span class="advisor-role">Energy & Sustainable Innovation Advisor</span>
             <p class="advisor-summary">
-              Especializado en nuevas energías, desarrollo sostenible y alianzas estratégicas orientadas a innovación e impacto internacional.
+              Experto en innovación energética, sostenibilidad y desarrollo de proyectos internacionales de alto impacto.
             </p>
           </div>
           <a href="#" class="advisor-btn" data-advisor="diego">
-            <span>Ver trayectoria</span>
+            <span>Ver perfil</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -822,18 +986,18 @@
       <!-- Card 3: Eduardo Rius -->
       <div class="advisor-card reveal-element">
         <div class="advisor-img-wrapper">
-          <img src="Eduardo Rius.png" alt="Eduardo Rius" class="advisor-img">
+          <img src="Eduardo Rius(1).png" onerror="this.onerror=null; this.src='Eduardo Rius.png';" alt="Eduardo Rius" class="advisor-img">
         </div>
         <div class="advisor-info">
           <div>
             <h3 class="advisor-name">Eduardo Rius</h3>
             <span class="advisor-role">Co-Founder & Strategic Technology Advisor</span>
             <p class="advisor-summary">
-              Más de 36 años liderando procesos de transformación para conectar automatización, inteligencia artificial e innovación empresarial en corporativos financieros y retail de Latinoamérica.
+              Más de 36 años impulsando transformación tecnológica, automatización, inteligencia artificial y modernización empresarial en Latinoamérica.
             </p>
           </div>
           <a href="#" class="advisor-btn" data-advisor="eduardo">
-            <span>Ver trayectoria</span>
+            <span>Ver perfil</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -856,11 +1020,11 @@
     </div>
   </div>
 
-  <!-- 4. PREMIUM CLOSING SECTION -->
+  <!-- 6. FOOTER FINAL -->
   <section class="premium-closing-section">
-    <h2 class="closing-headline-serif reveal-element">“Las mejores oportunidades rara vez llegan por casualidad.”</h2>
+    <h2 class="closing-headline-serif reveal-element">“Las relaciones correctas siguen siendo la ventaja más poderosa.”</h2>
     <p class="closing-subtext reveal-element">
-      En SGI trabajamos con relaciones, criterio y visión estratégica para conectar personas, capital y proyectos con verdadero potencial internacional.
+      SGI conecta estrategia, inversión, tecnología y acceso internacional para construir oportunidades con visión de largo plazo.
     </p>
     <div class="reveal-element">
       <a href="agendar-llamada.html" class="btn btn-gold-luxury">Solicitar conversación privada</a>
@@ -919,12 +1083,15 @@
       revealObserver.observe(el);
     });
 
-    // Gold Dust particles effect
-    const canvas = document.getElementById('gold-particles-canvas');
-    if (canvas) {
+    // Gold Dust particles effect function
+    function setupParticles(canvasId, densityFactor = 1) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
       const ctx = canvas.getContext('2d');
       let particles = [];
-      const particleCount = 45;
+      const baseParticleCount = 30;
+      const particleCount = Math.floor(baseParticleCount * densityFactor);
 
       class Particle {
         constructor() {
@@ -936,18 +1103,18 @@
           this.x = Math.random() * canvas.width;
           this.y = canvas.height + Math.random() * 20;
           this.size = Math.random() * 1.5 + 0.4;
-          this.speedY = -(Math.random() * 0.35 + 0.1);
+          this.speedY = -(Math.random() * 0.3 + 0.08);
           this.speedX = Math.random() * 0.2 - 0.1;
           this.opacity = 0;
           this.maxOpacity = Math.random() * 0.4 + 0.1;
-          this.fadeSpeed = Math.random() * 0.008 + 0.002;
+          this.fadeSpeed = Math.random() * 0.007 + 0.002;
         }
 
         update() {
           this.y += this.speedY;
           this.x += this.speedX;
 
-          if (this.y < canvas.height * 0.75) {
+          if (this.y < canvas.height * 0.7) {
             this.opacity -= this.fadeSpeed;
           } else if (this.opacity < this.maxOpacity) {
             this.opacity += this.fadeSpeed;
@@ -997,15 +1164,19 @@
       animate();
     }
 
+    // Run particles for founder and advisors sections
+    setupParticles('gold-particles-canvas-founder', 1);
+    setupParticles('gold-particles-canvas-advisors', 1.2);
+
     // Trajectory details data and interactive Modal
     const trajectories = {
       amanda: {
         name: "Amanda Hun",
-        role: "CEO & Strategic Investment Advisor",
+        role: "Strategic Investment Advisor",
         bio: `
           <p>Amanda Hun cuenta con más de 18 años de trayectoria en el sector de la inversión inmobiliaria internacional y advisory de alto nivel, actuando como enlace clave entre Europa, Emiratos Árabes Unidos y Latinoamérica.</p>
           <p>Ha liderado la estructuración de portafolios patrimoniales transfronterizos y la adquisición de activos inmobiliarios icónicos en mercados de alto nivel como Dubái, Londres y Madrid. Su enfoque combina un análisis riguroso de retornos con una red exclusiva de relaciones que le permite estructurar transacciones fuera de mercado (off-market).</p>
-          <p>En SGI, Amanda dirige la visión estratégica del grupo, coordinando la relación con oficinas familiares de inversión (Family Offices), fondos globales y oportunidades de expansión de alto perfil.</p>
+          <p>En SGI, Amanda dirige la visión de coinversiones internacionales, coordinando la relación con oficinas familiares de inversión (Family Offices), fondos globales y oportunidades de expansión de alto perfil.</p>
         `
       },
       diego: {
