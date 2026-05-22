@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformaciones Estratégicas | SGI Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Estilos específicos para la sección premium de Transformaciones Estratégicas */
+    .transformations-page {
+      background: #050505 !important;
+      color: var(--text-white);
+    }
+    
+    /* ─── NUEVA INTRO CINEMÁTICA ─── */
+    .transformations-hero {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16rem 2rem 10rem 2rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #050505;
+      box-sizing: border-box;
+    }
+    
+    .transformations-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+      font-weight: 400;
+      color: #FFFFFF;
+      line-height: 1.25;
+      max-width: 1050px;
+      margin: 0 auto 3rem auto;
+      letter-spacing: -0.5px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .transformations-hero .lead {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: var(--gold);
+      font-weight: 500;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+    
+    /* Triggered via JS for smooth cinematic fade-in */
+    .transformations-hero.revealed h1,
+    .transformations-hero.revealed .lead {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── CHAPTER SECTIONS ─── */
+    .chapters-wrapper {
+      padding: 0 4rem;
+      background: #050505;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .story-chapter {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      min-height: 600px;
+      margin-bottom: 0; /* Espaciado controlado por transiciones */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6rem 5rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      background: #000;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .story-chapter.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Background image wrapper and image */
+    .chapter-bg-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .chapter-bg {
+      position: absolute;
+      inset: -60px 0; /* Overflow vertical para evitar bordes blancos durante el scroll parallax */
+      background-size: cover;
+      background-position: center;
+      filter: sepia(12%) contrast(1.35) brightness(0.42) saturate(1.1);
+      transition: filter 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Elegant dark overlays blending the image into the absolute black page background */
+    .chapter-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 60% 50%, rgba(20, 15, 8, 0.05) 0%, rgba(5, 5, 5, 0.72) 85%),
+        linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 35%, rgba(5,5,5,0.02) 65%, rgba(5,5,5,0.75) 100%),
+        linear-gradient(0deg, rgba(5,5,5,0.85) 0%, transparent 50%);
+      z-index: 1;
+      transition: background 1.6s ease;
+      pointer-events: none;
+    }
+
+    /* Floating discrete logo - bottom-right historic seal */
+    .chapter-logo-container {
+      position: absolute;
+      bottom: 4.5rem;
+      right: 5rem;
+      z-index: 2;
+      opacity: 0.38;
+      max-width: 120px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      filter: grayscale(100%) brightness(1.6);
+      transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .chapter-logo-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Text content area */
+    .chapter-content {
+      position: relative;
+      z-index: 3;
+      max-width: 750px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .story-chapter.revealed .chapter-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Typography */
+    .chapter-num {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+    
+    .chapter-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 8vw, 3.4rem); /* Responsive: 42px-54px en móviles */
+      font-weight: 400;
+      color: #FFF;
+      line-height: 1.05;
+      margin-bottom: 0.8rem;
+      letter-spacing: -1.5px;
+      transition: text-shadow 1.5s ease;
+    }
+    
+    .chapter-subheadline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    /* Subtle gold line */
+    .chapter-divider {
+      height: 1px;
+      background: var(--gold);
+      width: 0;
+      transition: width 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .story-chapter.revealed .chapter-divider {
+      width: 140px;
+    }
+
+    /* Description paragraph */
+    .chapter-desc {
+      font-family: var(--font-sans);
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+      line-height: 1.8;
+      color: #BBB;
+      font-weight: 300;
+      max-width: 650px;
+      opacity: 0.85;
+      transition: color 1.5s ease, opacity 1.5s ease;
+    }
+
+    /* Tags at the bottom */
+    .chapter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2.2rem;
+      opacity: 0.45;
+      transition: opacity 1.5s ease;
+    }
+    
+    .chapter-tags span {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .chapter-tags span:not(:last-child)::after {
+      content: '·';
+      margin-left: 0.8rem;
+      color: var(--gold);
+    }
+
+    /* ─── HOVER EFFECTS (DESKTOP) ─── */
+    @media (min-width: 993px) {
+      .story-chapter:hover {
+        border-color: rgba(201, 168, 76, 0.15);
+        box-shadow: 0 40px 80px rgba(0,0,0,0.95), 0 0 50px rgba(201, 168, 76, 0.08);
+      }
+
+      .story-chapter:hover .chapter-bg-wrapper {
+        transform: scale(1.03); /* zoom cinematic muy ligero */
+      }
+
+      .story-chapter:hover .chapter-bg {
+        filter: sepia(10%) contrast(1.4) brightness(0.5) saturate(1.2); /* brillo sutil y detalle en hover */
+      }
+
+      .story-chapter:hover .chapter-logo-container {
+        opacity: 0.65;
+        transform: translateY(-3px);
+      }
+
+      .story-chapter:hover .chapter-content {
+        transform: translateY(-8px); /* sube ligeramente */
+      }
+
+      .story-chapter:hover .chapter-headline {
+        text-shadow: 0 0 30px rgba(201, 168, 76, 0.25); /* glow dorado elegante */
+      }
+
+      .story-chapter:hover .chapter-divider {
+        width: 220px; /* línea dorada animada */
+      }
+
+      .story-chapter:hover .chapter-desc {
+        color: #FFF;
+        opacity: 1;
+      }
+      
+      .story-chapter:hover .chapter-tags {
+        opacity: 0.85;
+      }
+      
+      .chapter-headline {
+        font-size: clamp(4.5rem, 6.5vw, 5.5rem); /* Desktop: 72px-88px */
+      }
+    }
+    
+    /* ─── TRANSICIONES ENTRE CASOS ─── */
+    .case-transition {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 9rem 0;
+      background: #050505;
+      pointer-events: none;
+    }
+    
+    .transition-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.45;
+      margin-bottom: 2rem;
+    }
+    
+    .transition-text {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 5px;
+      color: var(--gold);
+      opacity: 0.55;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ─── CLOSING SECTION ─── */
+    .transformations-closing {
+      background: #050505;
+      padding: 20rem 2rem 24rem 2rem; /* Muchísimo espacio negativo al finalizar */
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    
+    .transformations-closing h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem); /* Frase final enorme */
+      font-weight: 400;
+      color: #FFF;
+      max-width: 1050px;
+      margin: 0 auto 3rem auto;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .transformations-closing p {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+    
+    .transformations-closing.revealed h2,
+    .transformations-closing.revealed p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE (MOBILE & TABLET) ─── */
+    @media (max-width: 992px) {
+      .transformations-hero {
+        padding: 12rem 2rem 6rem 2rem;
+        min-height: auto;
+      }
+      
+      .chapters-wrapper {
+        padding: 0 2rem;
+      }
+      
+      .story-chapter {
+        height: auto;
+        min-height: 520px;
+        padding: 6rem 2.5rem 4rem 2.5rem;
+      }
+      
+      .chapter-logo-container {
+        bottom: auto;
+        top: 3.5rem;
+        right: 2.5rem;
+        opacity: 0.45;
+        max-width: 95px;
+        height: 32px;
+      }
+      
+      .chapter-divider {
+        width: 120px !important;
+        margin-top: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .chapter-desc {
+        font-size: 1.05rem;
+      }
+      
+      .chapter-tags {
+        opacity: 0.7;
+        margin-top: 1.8rem;
+      }
+      
+      .case-transition {
+        padding: 6rem 0;
+      }
+      
+      .transition-line {
+        height: 60px;
+      }
+      
+      .transformations-closing {
+        padding: 12rem 2rem 14rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="internal-page transformations-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="SGI Consulting Group">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="transformaciones-estrategicas.html" class="active-link" style="color: var(--gold);">Transformaciones</a></li>
+        <li><a href="mercados.html">Mercados</a></li>
+        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+      </ul>
+      <div class="lang-selector">
+        <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
+      </div>
+      <a href="agendar-llamada.html" class="nav-cta">Agendar llamada</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- INTRO HERO -->
+  <header class="transformations-hero">
+    <h1>36 años participando en la evolución tecnológica y operativa de corporativos líderes.</h1>
+    <p class="lead">BANCA · RETAIL · FINTECH · APIs · IA · CAPITAL MARKETS</p>
+  </header>
+
+  <!-- CHAPTERS WRAPPER -->
+  <section class="chapters-wrapper">
+    
+    <!-- CASE 1: BBVA Bancomer -->
+    <article class="story-chapter" id="chapter-bbva">
+      <div class="chapter-bg-wrapper">
+        <div class="chapter-bg" style="background-image: url('BBVABancomerCorporativo.png');"></div>
+        <div class="chapter-overlay"></div>
+      </div>
+      
+      <div class="chapter-logo-container">
+        <img src="BBVABancomerLogo.png" alt="BBVA Bancomer Logo">
+      </div>
+      
+      <div class="chapter-content">
+        <span class="chapter-num">CHAPTER 01</span>
+        <h2 class="chapter-headline">BBVA Bancomer</h2>
+        <h3 class="chapter-subheadline">Transformación Bancaria a Escala Nacional</h3>
+        <div class="chapter-divider"></div>
+        <p class="chapter-desc">
+          Participación en la evolución tecnológica de más de 1,000 sucursales bancarias, integrando automatización financiera y una de las primeras redes inalámbricas implementadas en banca dentro de Latinoamérica.
+        </p>
+        <div class="chapter-tags">
+          <span>BANCA</span>
+          <span>INFRAESTRUCTURA</span>
+          <span>ESCALA</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Divider 1 -->
+    <div class="case-transition">
+      <div class="transition-line"></div>
+      <span class="transition-text">ESCALA · INTEGRACIÓN · EVOLUCIÓN</span>
+    </div>
+
+    <!-- CASE 2: Grupo Elektra & Banco Azteca -->
+    <article class="story-chapter" id="chapter-elektra">
+      <div class="chapter-bg-wrapper">
+        <div class="chapter-bg" style="background-image: url('ElektraBancoAztecaCorporativo.png');"></div>
+        <div class="chapter-overlay"></div>
+      </div>
+      
+      <div class="chapter-logo-container" style="gap: 0.8rem; max-width: 140px;">
+        <img src="ElektraLogo.png" alt="Grupo Elektra Logo">
+        <span style="color: rgba(255,255,255,0.15); font-size: 1rem; font-weight: 300;">|</span>
+        <img src="BancoAztecaLogo.png" alt="Banco Azteca Logo">
+      </div>
+      
+      <div class="chapter-content">
+        <span class="chapter-num">CHAPTER 02</span>
+        <h2 class="chapter-headline">Grupo Elektra & Banco Azteca</h2>
+        <h3 class="chapter-subheadline">Integración Omnicanal y Servicios Financieros</h3>
+        <div class="chapter-divider"></div>
+        <p class="chapter-desc">
+          Integración estratégica de operaciones retail, financieras y servicios digitales para habilitar crecimiento omnicanal y automatización de alto volumen.
+        </p>
+        <div class="chapter-tags">
+          <span>FINTECH</span>
+          <span>OMNICANALIDAD</span>
+          <span>APIs</span>
+          <span>BPM</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Divider 2 -->
+    <div class="case-transition">
+      <div class="transition-line"></div>
+      <span class="transition-text">OPERACIONES QUE DEFINEN MERCADOS</span>
+    </div>
+
+    <!-- CASE 3: Liverpool -->
+    <article class="story-chapter" id="chapter-liverpool">
+      <div class="chapter-bg-wrapper">
+        <div class="chapter-bg" style="background-image: url('LiverpoolCorporativo.png');"></div>
+        <div class="chapter-overlay"></div>
+      </div>
+      
+      <div class="chapter-logo-container">
+        <img src="LiverpoolLogo.png" alt="Liverpool Logo">
+      </div>
+      
+      <div class="chapter-content">
+        <span class="chapter-num">CHAPTER 03</span>
+        <h2 class="chapter-headline">Liverpool</h2>
+        <h3 class="chapter-subheadline">Evolución Digital & Omnicanalidad</h3>
+        <div class="chapter-divider"></div>
+        <p class="chapter-desc">
+          Participación en la modernización digital y evolución omnicanal mediante plataformas de comercio empresarial e integración operativa de gran escala.
+        </p>
+        <div class="chapter-tags">
+          <span>RETAIL</span>
+          <span>ECOMMERCE</span>
+          <span>OMNICANALIDAD</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Divider 3 -->
+    <div class="case-transition">
+      <div class="transition-line"></div>
+      <span class="transition-text">LIDERAZGO · TECNOLOGÍA · IMPACTO</span>
+    </div>
+
+    <!-- CASE 4: Grupo BMV -->
+    <article class="story-chapter" id="chapter-bmv">
+      <div class="chapter-bg-wrapper">
+        <div class="chapter-bg" style="background-image: url('GrupoBolsaMexicanadeValoresCorporativo.png');"></div>
+        <div class="chapter-overlay"></div>
+      </div>
+      
+      <div class="chapter-logo-container">
+        <img src="GrupoBolsaMexicanadeValoresLogo.png" alt="Grupo BMV Logo">
+      </div>
+      
+      <div class="chapter-content">
+        <span class="chapter-num">CHAPTER 04</span>
+        <h2 class="chapter-headline">Grupo BMV</h2>
+        <h3 class="chapter-subheadline">Modernización API-led</h3>
+        <div class="chapter-divider"></div>
+        <p class="chapter-desc">
+          Diseño de arquitectura basada en APIs para fortalecer automatización, seguridad y conectividad estratégica dentro del ecosistema financiero bursátil mexicano.
+        </p>
+        <div class="chapter-tags">
+          <span>APIs</span>
+          <span>CAPITAL MARKETS</span>
+          <span>SEGURIDAD</span>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CLOSING SECTION -->
+  <section class="transformations-closing">
+    <h2>“La experiencia correcta cambia el tamaño de las oportunidades.”</h2>
+    <p>Décadas participando en operaciones empresariales de alto impacto.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html"><img src="Logo.png" alt="SGI Consulting Group"></a>
+    </div>
+    <div>
+      &copy; 2026 SGI Consulting Group. Todos los derechos reservados.
+    </div>
+    <div>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Privacidad</a>
+      <a href="#" style="color:var(--text-muted); text-decoration:none; margin-left:1rem;">Términos</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll Storytelling & Parallax Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const chapters = document.querySelectorAll('.story-chapter');
+      const hero = document.querySelector('.transformations-hero');
+      const closing = document.querySelector('.transformations-closing');
+      
+      // Reveal hero on load
+      setTimeout(() => {
+        if (hero) hero.classList.add('revealed');
+      }, 150);
+
+      // IntersectionObserver for revealing sections
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      chapters.forEach(chapter => {
+        revealObserver.observe(chapter);
+      });
+
+      if (closing) {
+        revealObserver.observe(closing);
+      }
+
+      // Smooth Parallax Scroll function
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+        chapters.forEach(chapter => {
+          const rect = chapter.getBoundingClientRect();
+          const top = rect.top + scrolled;
+          const visibleStart = top - window.innerHeight;
+          const visibleEnd = top + rect.height;
+          
+          if (scrolled >= visibleStart && scrolled <= visibleEnd) {
+            const totalDistance = visibleEnd - visibleStart;
+            const currentDistance = scrolled - visibleStart;
+            const scrollPercent = currentDistance / totalDistance;
+            
+            // Mapea el porcentaje de scroll a un rango de desplazamiento vertical
+            const parallaxValue = -45 + (scrollPercent * 90);
+            const bg = chapter.querySelector('.chapter-bg');
+            if (bg) {
+              bg.style.transform = `translateY(${parallaxValue}px)`;
+            }
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateParallax);
+      updateParallax(); // Ejecutar al inicio para posicionar correctamente
+    });
+  </script>
+</body>
+</html>
