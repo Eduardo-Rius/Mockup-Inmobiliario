@@ -682,6 +682,48 @@
       margin-bottom: 0;
     }
 
+    .modal-back-btn {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-back-btn:hover {
+      background: var(--gold);
+      color: #050505;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 168, 76, 0.15);
+    }
+
+    .modal-back-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-back-btn:hover svg {
+      transform: translateX(-4px);
+    }
+
     /* --- 6. PREMIUM CLOSING SECTION & FOOTER --- */
     .premium-closing-section {
       background: var(--bg-absolute-black);
@@ -1026,6 +1068,12 @@
       <div id="modal-advisor-body" class="modal-body">
         <!-- Content injected via JS -->
       </div>
+      <div style="display: flex; justify-content: flex-end;">
+        <button id="modal-btn-close-back" class="modal-back-btn">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Volver a Sobre SGI</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1236,6 +1284,11 @@
 
     if (modalClose) {
       modalClose.addEventListener('click', closeModal);
+    }
+
+    const modalCloseBack = document.getElementById('modal-btn-close-back');
+    if (modalCloseBack) {
+      modalCloseBack.addEventListener('click', closeModal);
     }
 
     if (modal) {
