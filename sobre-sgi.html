@@ -435,17 +435,18 @@
       z-index: 2;
     }
 
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 768px) {
       .advisors-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 3rem;
       }
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 1200px) {
       .advisors-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1400px;
+        gap: 2.5rem;
       }
     }
 
@@ -819,6 +820,7 @@
     .reveal-stagger > *:nth-child(1).reveal-element { transition-delay: 0.1s; }
     .reveal-stagger > *:nth-child(2).reveal-element { transition-delay: 0.28s; }
     .reveal-stagger > *:nth-child(3).reveal-element { transition-delay: 0.46s; }
+    .reveal-stagger > *:nth-child(4).reveal-element { transition-delay: 0.64s; }
 
     /* CSS Keyframes */
     @keyframes fadeUpReveal {
@@ -1054,6 +1056,26 @@
         </div>
       </div>
 
+      <!-- Card 4: Yolanda Garrido -->
+      <div class="advisor-card reveal-element">
+        <div class="advisor-img-wrapper">
+          <img src="Yolanda Garrido.png" alt="Yolanda Garrido" class="advisor-img">
+        </div>
+        <div class="advisor-info">
+          <div>
+            <h3 class="advisor-name">Yolanda Garrido</h3>
+            <span class="advisor-role">International Markets & Commodities Advisor</span>
+            <p class="advisor-summary">
+              Especialista en commodities, negociación internacional y desarrollo de canales estratégicos de suministro. Conecta oferta, demanda y capital en operaciones globales de alto valor.
+            </p>
+          </div>
+          <a href="#" class="advisor-btn" data-advisor="yolanda">
+            <span>Ver perfil</span>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1252,6 +1274,15 @@
           <p>Eduardo Rius posee más de 36 años de experiencia liderando procesos de transformación digital y automatización de sistemas críticos para corporaciones financieras, retail y logísticas en Latinoamérica.</p>
           <p>Ha estado a la vanguardia de la integración de inteligencia artificial y soluciones tecnológicas empresariales avanzadas que aumentan drásticamente la eficiencia operativa y el valor de mercado de las organizaciones.</p>
           <p>Como cofundador de SGI, Eduardo aporta su visión de estrategia tecnológica, asegurando que la tecnología de punta actúe como un catalizador principal en todos los procesos de expansión y transformación empresarial de nuestros socios comerciales.</p>
+        `
+      },
+      yolanda: {
+        name: "Yolanda Garrido",
+        role: "International Markets & Commodities Advisor",
+        bio: `
+          <p>Yolanda Garrido es especialista internacional en commodities, negociación estratégica y desarrollo de canales de suministro globales.</p>
+          <p>Su trayectoria se centra en conectar oferta y demanda en mercados internacionales de alto valor, gestionando relaciones comerciales, logística, contratos complejos y alianzas con corporaciones de primer nivel.</p>
+          <p>Dentro de SGI, aporta experiencia clave en comercio internacional, materias primas, estructuración de operaciones y expansión transfronteriza, ayudando a transformar oportunidades de mercado en relaciones comerciales sólidas y sostenibles.</p>
         `
       }
     };
