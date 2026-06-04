@@ -62,8 +62,11 @@ function doPost(e) {
     
     // ----------- ENVÍO DEL EMAIL AUTOMÁTICO -----------
     // Inyectamos la imagen directamente en código Base64
-    const firmaBase64 = "iVBORw0KGgoAAAANSUhEUgAAAKwAAACsCAYAAABvBzfqAAAABHNCSVQICAgIfAhkiAAAAGV4YlRybWZ4Y2xjbXMAd3d3Lmlua2xpbmsuZGVzaWduM2dtNzE3MTk3NDlhZDExM2U1YWU3OTFkMmE3OTE4M2Q5ZDU2OGU3OTM4YjE4YTkxOGFlMzk0YTAxMmU1YWU3OTE4OGE3MTk3NDlhZDExM2U1YWU3OTE4OGE3MY6zJWAAAC8DSURBVHic7Z15tF1VleefvcOZ38uTB0kYkgBhEAkxCIjQoDgoCKLd9WpZth0Nre7VvVXd/au2a6uW2+vV2lW1ulq7O7W242jHURBRRAQFZBCiIBmAMIRAMhDy/F4e8+3zR59z9/m+h/fymffy3lM1e/994Z57znd2uL/v3HP2Wbse13UhRChCEXrxKk8eQoRS4B0XG18t/QcRYhQO70yOQhFiFI67B8dFiFE47h6cFiFGEWJ0bIQYRYjRsRFiFCFGx0aIUYQYHRshRhFidGsTDTf/0e5P/amS/0Hl91723lMhhBChqO2Vl5Z3/2/v/RVCiNlueWm560l/0Nl/0Nl9IIQQoqhdO3b8uX//7l0bNzY2btm4cXTbxo2N12284s2XbNzY+O2NGxu3XbfxijffeuPGxhs2XvHmTddtvOL6Kz73pkvH1o1pW7du3F320nLnvXfuH1zO0tIyWdYm87qyl/1BpyyEGFvG2qWl5Z6Z6Z5ZXVp6Zq5V7p2drW3t0tIy07VLTdfV7v69/9B123v3/t/eewv/14vIee9Lz3TNe991rW3t/wF3fE2167d4rQAAAABJRU5ErkJggg==";
-    const firmaBase64Html = "<img src='data:image/png;base64," + firmaBase64 + "' alt='Firma Emilio' style='max-width: 150px; height: auto;' />";
+    const firmaBase64 = "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";
+    
+    // Convertimos la firma Base64 a un Blob para incrustarlo
+    const base64Data = firmaBase64.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
+    const imageBlob = Utilities.newBlob(Utilities.base64Decode(base64Data), "image/jpeg", "firmaImage");
     
     const destinatario = email;
     const asunto = "Confirmación de Solicitud Privada - SGI Consulting Group";
@@ -105,7 +108,7 @@ function doPost(e) {
           <p style="margin: 0; font-style: italic;">Socio Director</p>
           <p style="margin: 0;">SGI Consulting Group</p>
           <div style="margin-top: 10px;">
-            ${firmaBase64Html}
+            <img src="cid:firmaImage" alt="Firma Emilio" style="max-width: 150px; height: auto; display: block;" />
           </div>
         </div>
       </div>
@@ -114,7 +117,10 @@ function doPost(e) {
     MailApp.sendEmail({
       to: destinatario,
       subject: asunto,
-      htmlBody: cuerpoHtml
+      htmlBody: cuerpoHtml,
+      inlineImages: {
+        firmaImage: imageBlob
+      }
     });
     
     // Devolver respuesta exitosa con CORS habilitado
