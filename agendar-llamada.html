@@ -313,6 +313,11 @@
     // URL DE GOOGLE APPS SCRIPT
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzw064Lw6ICU3078VvK7tJY7kVbgJWd-O8hNTpQL38_hkYqv5BcCnqEomls60Yc7sLRKw/exec';
 
+    // Add visual submission class to highlight empty required fields in red
+    submitBtn.addEventListener('click', () => {
+      form.classList.add('submitted');
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
       

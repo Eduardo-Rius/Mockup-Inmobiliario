@@ -458,6 +458,11 @@ footer { padding: 4rem; border-top: 1px solid rgba(255,255,255,0.05); display: f
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Invalid states after submission attempt */
+.evaluation-form.submitted .form-control-swiss:invalid {
+  border-bottom-color: #ff6b6b !important;
+}
+
 @media (max-width: 900px) {
   nav { padding: 1.5rem 2rem; }
   nav.scrolled { padding: 1rem 2rem; }
