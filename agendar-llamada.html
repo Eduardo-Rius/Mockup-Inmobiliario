@@ -338,6 +338,7 @@
           successMsg.style.display = 'block';
           errorMsg.style.display = 'none';
           form.reset();
+          form.classList.remove('submitted');
           hiddenInput.value = '';
           charCountDesc.textContent = '400 caracteres restantes';
           charCountMotivo.textContent = '400 caracteres restantes';
