@@ -103,7 +103,7 @@ function doPost(e) {
           <p style="margin: 0; font-style: italic;">Socio Director</p>
           <p style="margin: 0;">SGI Consulting Group</p>
           <div style="margin-top: 10px;">
-            <img src="cid:firmaImage" alt="Firma Emilio" style="max-width: 150px; height: auto; display: block;" />
+            <img src="cid:firmaImage" alt="Firma Emilio" style="max-width: 320px; height: auto; display: block;" />
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@ function testEmail() {
 
 
 function getLogoBlob() {
-  const logoUrl = "https://raw.githubusercontent.com/Eduardo-Rius/Mockup-Inmobiliario/main/SGI%20Logo%20Removed%20Background.png";
+  const logoUrl = "https://raw.githubusercontent.com/Eduardo-Rius/Mockup-Inmobiliario/main/FirmaMailEmilio.jpeg";
   try {
     return UrlFetchApp.fetch(logoUrl).getBlob().setName("firmaImage");
   } catch (e) {
