@@ -11,18 +11,25 @@ function doPost(e) {
     const formData = e.parameter;
     const fecha = new Date();
     const nombre = formData.nombre || "";
+    const cargo = formData.cargo || "";
+    const empresa = formData.empresa || "";
     const pais = formData.pais || "";
     const email = formData.email || "";
     const telefono = formData.telefono || "";
-    // Agregamos un apóstrofe al inicio para que Google Sheets lo tome como texto literal
-    // y no crea que "+10M" es una fórmula matemática que deba resolver.
-    const volumen = formData.volumen ? "'" + formData.volumen : "";
-    const mercado = formData.mercado || "";
     const objetivo = formData.objetivo || "";
-    const invertido_fuera = formData.invertido_fuera || "";
-    const asesor = formData.asesor || "";
+    const sector = ""; // Omitido en la nueva estructura
+    const descripcion = formData.descripcion || "";
+    const alcance = formData.alcance || "";
+    const financiacion = ""; // Omitido en la nueva estructura
+    // Agregamos un apóstrofe al inicio para que Google Sheets lo tome como texto literal
+    const volumen = formData.volumen ? "'" + formData.volumen : "";
+    const horizonte = formData.horizonte || "";
+    const origen = ""; // Omitido en la nueva estructura
+    const recomendado_por = ""; // Omitido en la nueva estructura
+    const reunion = ""; // Omitido en la nueva estructura
+    const dispuesto_invertir = ""; // Omitido en la nueva estructura
     const estado = "Nuevo Lead";
-    const notas = "";
+    const notas = formData.motivo_hablar || ""; // Paso 5 mapeado a Notas
     
     // Obtener la última fila con datos para calcular en qué fila insertaremos
     const lastRow = sheet.getLastRow();
@@ -31,29 +38,40 @@ function doPost(e) {
     // Eliminamos el apóstrofe para que la lógica de JS funcione correctamente
     const volumenLimpio = formData.volumen || "";
     let scoreNumerico = 1;
-    if (volumenLimpio === "+10M") {
+    if (volumenLimpio === "Más de 10 millones €") {
       scoreNumerico = 5;
-    } else if (volumenLimpio === "3M–10M") {
+    } else if (volumenLimpio === "Entre 1 y 10 millones €") {
       scoreNumerico = 4;
-    } else if (volumenLimpio === "1M–3M") {
+    } else if (volumenLimpio === "Menos de 1 millón €") {
+      scoreNumerico = 2;
+    } else if (volumenLimpio === "Prefiero comentarlo personalmente") {
       scoreNumerico = 3;
     }
 
     // Array con el orden de las columnas:
-    // 1:Fecha, 2:Nombre completo, 3:País, 4:Email, 5:Teléfono, 6:Volumen de inversión,
-    // 7:Mercado de interés, 8:Objetivo principal, 9:¿Ha invertido fuera?, 10:Qué busca en un asesor,
-    // 11:Score, 12:Estado, 13:Notas
+    // 1:Fecha, 2:Nombre completo, 3:Cargo, 4:Empresa, 5:País, 6:Email, 7:WhatsApp, 
+    // 8:Objetivos, 9:Sector de actividad, 10:Situación, 11:Alcance, 
+    // 12:Requiere financiación, 13:Volumen, 14:Horizonte, 15:Origen, 16:Recomendado por, 
+    // 17:Reunión de valoración, 18:Dispuesto a invertir, 19:Score, 20:Estado, 21:Motivo de Solicitud
     const rowData = [
       fecha, 
       nombre, 
+      cargo,
+      empresa,
       pais, 
       email, 
       telefono, 
-      volumen, 
-      mercado, 
       objetivo, 
-      invertido_fuera, 
-      asesor, 
+      sector,
+      descripcion,
+      alcance,
+      financiacion,
+      volumen, 
+      horizonte,
+      origen,
+      recomendado_por,
+      reunion,
+      dispuesto_invertir,
       scoreNumerico, // Score calculado en el backend
       estado, 
       notas
