@@ -459,8 +459,9 @@ footer { padding: 4rem; border-top: 1px solid rgba(255,255,255,0.05); display: f
 }
 
 /* Invalid states after submission attempt */
-.evaluation-form.submitted .form-control-swiss:invalid {
-  border-bottom-color: #ff6b6b !important;
+.evaluation-form.submitted .form-control-swiss:invalid,
+.evaluation-form.submitted select.form-control-swiss:invalid {
+  border-bottom: 1px solid #ff6b6b !important;
 }
 
 @media (max-width: 900px) {
