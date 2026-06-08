@@ -68,7 +68,11 @@ nav {
 nav.scrolled {
   padding: 1rem 4rem;
 }
-.nav-logo img { height: 160px; object-fit: contain; }
+.nav-logo img {
+  height: 160px;
+  object-fit: contain;
+  transition: height var(--transition);
+}
 .nav-right { display: flex; align-items: center; gap: 2.5rem; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
@@ -88,6 +92,37 @@ nav.scrolled {
   height: 1px; background: var(--gold); transition: right var(--transition);
 }
 .nav-links a:hover::after { right: 0; }
+
+/* ─── INTERNAL PAGE NAVBAR STANDARDIZATION ─── */
+.internal-page nav {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.8rem 4rem;
+}
+.internal-page nav.scrolled {
+  background: rgba(5, 5, 5, 0.95);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 0.4rem 4rem;
+}
+.internal-page .nav-logo img {
+  height: 50px;
+  object-fit: contain;
+  transition: height var(--transition);
+}
+.internal-page nav.scrolled .nav-logo img {
+  height: 35px;
+}
+
+/* Active navigation link styling */
+.nav-links a.active-link {
+  color: var(--gold) !important;
+}
+.nav-links a.active-link::after {
+  right: 0 !important;
+}
+
 
 .lang-selector {
   display: flex; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted);
@@ -136,7 +171,7 @@ nav.scrolled {
 /* ─── SECTIONS COMMON ─── */
 section { padding: 6rem 4rem; }
 /* Added top padding for internal pages so content isn't under navbar */
-.internal-page section { padding-top: 13rem; }
+.internal-page section { padding-top: 15rem; }
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: center;
@@ -475,6 +510,55 @@ footer { padding: 4rem; border-top: 1px solid rgba(255,255,255,0.05); display: f
   .hero-actions { flex-direction: column; }
   .form-container { padding: 0; }
   footer { flex-direction: column; gap: 2rem; text-align: center; }
+
+  /* Mobile menu drawer for internal pages */
+  .internal-page .nav-right {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 8rem 2rem 4rem 2rem;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    align-items: center;
+    gap: 3rem;
+    z-index: 100;
+  }
+  .internal-page .nav-right.active {
+    right: 0;
+  }
+  .internal-page .nav-links {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .internal-page .lang-selector {
+    margin-top: 1rem;
+  }
+  .internal-page .hamburger {
+    z-index: 101;
+  }
+  .internal-page .hamburger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .internal-page .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .internal-page .hamburger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .internal-page nav {
+    padding: 0.8rem 2rem;
+  }
+  .internal-page nav.scrolled {
+    padding: 0.4rem 2rem;
+  }
 }
 
 

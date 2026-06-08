@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
   <style>
     .details-hero {
       text-align: center;
@@ -98,16 +98,16 @@
     </a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="transformaciones-estrategicas.html">Transformaciones</a></li>
-        <li><a href="mercados.html">Mercados</a></li>
-        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
-        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="servicios.html?v=3">Servicios</a></li>
+        <li><a href="transformaciones-estrategicas.html?v=3">Transformaciones</a></li>
+        <li><a href="mercados.html?v=3">Mercados</a></li>
+        <li><a href="sobre-sgi.html?v=3">Sobre SGI</a></li>
+        <li><a href="proyectos.html?v=3">Proyectos</a></li>
       </ul>
       <div class="lang-selector">
         <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
       </div>
-      <a href="agendar-llamada.html" class="nav-cta">Evaluación Privada</a>
+      <a href="agendar-llamada.html?v=3" class="nav-cta">Evaluación Privada</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -222,6 +222,16 @@
         nav.classList.remove('scrolled');
       }
     });
+
+    // Mobile hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navRight = document.querySelector('.nav-right');
+    if (hamburger && navRight) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navRight.classList.toggle('active');
+      });
+    }
   </script>
 </body>
 </html>

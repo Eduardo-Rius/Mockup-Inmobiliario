@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 
   <style>
     /* Reset and isolated variables for luxury dark aesthetic */
@@ -37,32 +37,7 @@
       z-index: 9999;
     }
 
-    /* --- NAVBAR MODIFICATIONS FOR OVERLAY --- */
-    nav {
-      background: transparent;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    nav.scrolled {
-      background: rgba(5, 5, 5, 0.95);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-      padding: 1rem 4rem;
-    }
 
-    /* Hamburger Active Animation */
-    .hamburger {
-      z-index: 101;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
 
     /* --- 1. HERO SECTION CINEMATOGRÁFICO (DO NOT TOUCH) --- */
     #sobre-sgi-hero {
@@ -403,15 +378,33 @@
     .team-divider-title {
       font-family: var(--font-serif);
       color: #FFF;
-      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
       font-weight: 300;
       letter-spacing: -0.5px;
+    }
+
+    .team-divider-subtitle {
+      font-family: var(--font-sans);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      max-width: 800px;
+      margin: 2.2rem auto 0 auto;
+      font-weight: 300;
+    }
+
+    .team-divider-subtitle p {
+      margin-bottom: 1.2rem;
+    }
+
+    .team-divider-subtitle p:last-child {
+      margin-bottom: 0;
     }
 
     /* --- 4. STRATEGIC ADVISORS GRID (RESTYLED) --- */
     #advisors-section {
       background: var(--bg-absolute-black);
-      padding: 6rem 2rem 12rem 2rem;
+      padding: 4rem 2rem 12rem 2rem;
       position: relative;
       z-index: 2;
     }
@@ -435,18 +428,49 @@
       z-index: 2;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1199px) {
       .advisors-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 3rem;
+        max-width: 900px;
+      }
+      /* Centrar la quinta tarjeta para que no quede desbalanceada en tablet */
+      .advisors-grid .advisor-card:nth-child(5) {
+        grid-column: span 2;
+        justify-self: center;
+        width: 100%;
+        max-width: 410px;
       }
     }
 
     @media (min-width: 1200px) {
       .advisors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 1400px;
-        gap: 2.5rem;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4rem 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Primera fila de 3 columnas */
+      .advisor-card:nth-child(1),
+      .advisor-card:nth-child(2),
+      .advisor-card:nth-child(3) {
+        grid-column: span 2;
+      }
+
+      /* Segunda fila de 2 columnas centradas con menor max-width */
+      .advisor-card:nth-child(4) {
+        grid-column: 2 / span 2;
+        justify-self: center;
+        width: 100%;
+        max-width: 330px;
+      }
+
+      .advisor-card:nth-child(5) {
+        grid-column: 4 / span 2;
+        justify-self: center;
+        width: 100%;
+        max-width: 330px;
       }
     }
 
@@ -853,38 +877,7 @@
       }
     }
 
-    /* Mobile Menu drawer updates */
-    @media (max-width: 900px) {
-      .nav-right {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 300px;
-        height: 100vh;
-        background: rgba(5, 5, 5, 0.98);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        padding: 8rem 2rem 4rem 2rem;
-        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
-        transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        align-items: center;
-        gap: 3rem;
-        z-index: 100;
-      }
-      .nav-right.active {
-        right: 0;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 2.5rem;
-        align-items: center;
-      }
-      .lang-selector {
-        margin-top: 1rem;
-      }
-    }
+
   </style>
 </head>
 <body class="internal-page">
@@ -896,16 +889,16 @@
     </a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="transformaciones-estrategicas.html">Transformaciones</a></li>
-        <li><a href="mercados.html">Mercados</a></li>
-        <li><a href="sobre-sgi.html">Sobre SGI</a></li>
-        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="servicios.html?v=3">Servicios</a></li>
+        <li><a href="transformaciones-estrategicas.html?v=3">Transformaciones</a></li>
+        <li><a href="mercados.html?v=3">Mercados</a></li>
+        <li><a href="sobre-sgi.html?v=3" class="active-link">Sobre SGI</a></li>
+        <li><a href="proyectos.html?v=3">Proyectos</a></li>
       </ul>
       <div class="lang-selector">
         <span class="active">ES</span> | <span>EN</span> | <span>AR</span>
       </div>
-      <a href="agendar-llamada.html" class="nav-cta">Evaluación Privada</a>
+      <a href="agendar-llamada.html?v=3" class="nav-cta">Evaluación Privada</a>
     </div>
     <div class="hamburger">
       <span></span><span></span><span></span>
@@ -969,7 +962,7 @@
           </p>
           <p>
             No se trata de mostrar opciones.<br>
-            Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas adecuadas en la misma mesa.
+            Se trata de abrir puertas correctas, filtrar ruido y sentar a las personas correctas en la mesa adecuada.
           </p>
         </div>
 
@@ -987,7 +980,11 @@
   <!-- 3. SECTION DIVIDER PREMIUM -->
   <div class="team-divider-section">
     <div class="team-divider-line reveal-element"></div>
-    <h2 class="team-divider-title reveal-element">Leadership & Strategic Advisors</h2>
+    <h2 class="team-divider-title reveal-element">La red detrás de cada oportunidad</h2>
+    <div class="team-divider-subtitle reveal-element">
+      <p>SGI reúne especialistas internacionales en inversión, mercados, tecnología, desarrollo empresarial, relaciones institucionales y gestión cultural.</p>
+      <p>Cada proyecto se construye con el talento adecuado, las conexiones precisas y la experiencia necesaria para abrir oportunidades donde otros solo ven barreras.</p>
+    </div>
   </div>
 
   <!-- 4. STRATEGIC ADVISORS GRID -->
@@ -1076,6 +1073,26 @@
         </div>
       </div>
 
+      <!-- Card 5: Rafael Carlos Arroyo Huerta -->
+      <div class="advisor-card reveal-element">
+        <div class="advisor-img-wrapper">
+          <img src="Rafael Carlos Arroyo Huerta.png" alt="Rafael Carlos Arroyo Huerta" class="advisor-img">
+        </div>
+        <div class="advisor-info">
+          <div>
+            <h3 class="advisor-name">Rafael Carlos Arroyo Huerta</h3>
+            <span class="advisor-role">Delegado de Cultura, Inversiones y RSC</span>
+            <p class="advisor-summary">
+              Especialista en diplomacia corporativa, desarrollo de inversiones estratégicas y gestión cultural internacional. Conecta instituciones, empresas y capital para impulsar alianzas de alto valor e iniciativas con impacto económico, social y cultural.
+            </p>
+          </div>
+          <a href="#" class="advisor-btn" data-advisor="rafael">
+            <span>Ver perfil</span>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1101,9 +1118,9 @@
 
   <!-- 6. FOOTER FINAL -->
   <section class="premium-closing-section">
-    <h2 class="closing-headline-serif reveal-element">“Las relaciones correctas siguen siendo la ventaja más poderosa.”</h2>
+    <h2 class="closing-headline-serif reveal-element">“Las grandes oportunidades no aparecen. Se construyen a través de las relaciones adecuadas.”</h2>
     <p class="closing-subtext reveal-element">
-      SGI conecta estrategia, inversión, tecnología y acceso internacional para construir oportunidades con visión de largo plazo.
+      SGI conecta inversión, estrategia, tecnología y acceso internacional para transformar posibilidades en resultados.
     </p>
     <div class="reveal-element">
       <a href="agendar-llamada.html" class="btn btn-gold-luxury">Solicitar conversación privada</a>
@@ -1283,6 +1300,15 @@
           <p>Yolanda Garrido es especialista internacional en commodities, negociación estratégica y desarrollo de canales de suministro globales.</p>
           <p>Su trayectoria se centra en conectar oferta y demanda en mercados internacionales de alto valor, gestionando relaciones comerciales, logística, contratos complejos y alianzas con corporaciones de primer nivel.</p>
           <p>Dentro de SGI, aporta experiencia clave en comercio internacional, materias primas, estructuración de operaciones y expansión transfronteriza, ayudando a transformar oportunidades de mercado en relaciones comerciales sólidas y sostenibles.</p>
+        `
+      },
+      rafael: {
+        name: "Rafael Carlos Arroyo Huerta",
+        role: "Delegado de Cultura, Inversiones y RSC",
+        bio: `
+          <p>Rafael Carlos Arroyo Huerta cuenta con una destacada trayectoria en diplomacia corporativa, relaciones gubernamentales y la estructuración de alianzas estratégicas internacionales de alto nivel.</p>
+          <p>Ha liderado iniciativas globales que integran el desarrollo empresarial y la inversión con proyectos de responsabilidad social corporativa y gestión cultural, actuando como puente entre el sector privado, organismos institucionales y fondos de capital.</p>
+          <p>En SGI, Rafael coordina la agenda de relaciones institucionales, inversiones de impacto y proyectos de RSC, potenciando el valor reputacional y el impacto positivo en cada una de las operaciones del grupo.</p>
         `
       }
     };
